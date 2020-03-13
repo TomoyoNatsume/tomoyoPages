@@ -2,7 +2,7 @@
 <html>
 <head> 
 <meta charset="gbk"> 
-<title style="font-size:smaller;color: aqua;">HomePage</title> 
+<title style="font-size:smaller;color: aqua;">正则表达式</title> 
 <style>
     *{
         line-height: 150%;
@@ -10,12 +10,19 @@
     }
     body{
         background-image: url('bg4.jpg');
-        
+        margin: 0px;
     }
 
     .mainDiv{
         width: 100%;
 
+    }
+    #logoAndHeader{
+        height: 140px;
+        /* margin: -18px -18px 0px -18px; */
+        padding: 0px;
+        background-color: #e2dfdfc2;
+        border-radius: 5px;
     }
     .logo{
         width: 30%;
@@ -47,13 +54,13 @@
     }
     .index{
         width: 28%;
-        margin: 10px;
+        margin: 20px 10px;
         padding: 0px;
         /* border:solid 1px #0000ff; */
         background-color: rgba(132, 192, 230, 0.692);
-        text-align: center;
+        text-align: left;
         float: left;
-        color: white;
+        color:   	#2E8B57;
         position: relative;
         left:40px;
         box-shadow: 10px 10px 5px rgba(132, 192, 230,0.692);
@@ -61,10 +68,14 @@
         前四个为像素值，分别代表水平、竖直方向的阴影偏移距离，模糊距离，阴影大小。
         后两个分别为颜色和从外层的阴影（开始时）改变阴影内侧阴影？ */
         border-radius: 10px;
+        font-size: 20px;
+    }
+    ol li{
+        margin:6px;
     }
     .content{
         width: 60%;
-        margin: 10px 20px;
+        margin: 20px 20px;
         float: right;
         position: relative;
         right: 30px;
@@ -91,6 +102,7 @@
         padding-left: 20px;
     }
     div.text1 table{
+        margin:20px;
         border-left:solid black 1px;
         border-top: solid black 1px;
         padding: 0px;
@@ -102,6 +114,7 @@
         padding:3px 10px;
     }   
     div.text2 table{
+        margin:20px;
         border-left:solid white 1px;
         border-top: solid white 1px;
         padding: 0px;
@@ -116,6 +129,22 @@
         text-decoration: none;
         color: green;
     }
+    li a{
+        color: inherit;
+    }
+
+    div.text1 span.cover{
+        background-color: black;
+    }
+    div.text1 span.cover:hover{
+        background-color: #ffffff00;
+    }
+    div.text2 span.cover{
+        background-color: white;
+    }
+    div.text2 span.cover:hover{
+        background-color: #ffffff00;
+    }
 </style>
 <script>
     window.onload=function(){
@@ -128,83 +157,267 @@
         oIndex.style.height=(iHt>800?iHt:800)+'px';
         var oMainDiv=document.getElementById('mainDiv');
         var oStyleMainDiv=window.getComputedStyle(oMainDiv);
-        oMainDiv.style.height=((parseInt(oStyleContent.height)>800?parseInt(oStyleContent.height):800)+160)+'px';
-        
+        oMainDiv.style.height=((parseInt(oStyleContent.height)>800?parseInt(oStyleContent.height):800)+180)+'px';
         //alert(oStyleContent.height+''+oStyleMainDiv.height);
 
         // alert(oContent.style.height);
+
+        //自动填充目录：
+        var aTitleOfText=document.getElementsByClassName('titleForIndex');
+        var oOl=document.getElementById('ulOfIndex');
+        for(var i=0;i<aTitleOfText.length;i++)
+        {
+            var node=document.createElement('li');
+            aTitleOfText[i].id='textTitle'+i;
+            node.innerHTML='<a href=#'+aTitleOfText[i].id+'>'+aTitleOfText[i].innerHTML+'</a>';
+            oOl.appendChild(node);
+        }
+
     };
 </script>
 </head>
 <body>
 <div style="position: relative;" class="mainDiv" id="mainDiv">
-<div class="logo" style="float: left;">
-    My&nbsp&nbsp&nbspHTML  
-</div>
-<div id="header" class="header" style="float: left;">
-主页</div>
+    <div id="logoAndHeader">
+        <div class="logo" style="float: left;">
+            My&nbsp&nbsp&nbspHTML  
+        </div>
+        <div id="header" class="header" style="float: left;">
+        正则表达式</div>
+
+    </div>
+
+
+
+
 <div id="index" class="index" style="float: left;" >
-    目录
+    <h2 style="margin: 15px 25px;">目录</h2>
+    <Ol id="ulOfIndex">
+
+    </Ol>   
 </div>
 <div id="content" class="content">
-    
     <div class="text1">
-        <h2 class="titleForIndex" data-index="1">html常用文本标签</h2>
+        <h2 class="titleForIndex" data-index="1">
+            创建正则表达式
+        </h2>
+        在js中正则表达式<i>(RegExp:Regular Expression)</i>是存在变量中的，有以下两种方法创建一个正则变量：
         <ul>
-            <li><Strong>表强调：strong</Strong> </li>
-            <li>
-                <em>表示语气强调以倾斜的方式显现：em</em>
-            </li>
-            <li>
-               <i>表倾斜：i</i>
-            </li>
-            <li>
-                <b>加粗：b</b>
-            </li>
-            <li>
-                <small>小字显示：small</small>
-            </li>
-            <li>
-                <cite>表示引用：cite</cite>
-            </li>
-            <li>
-                <sub>让字体变小：sub</sub>
-            </li>
-            <li>
-                <u>下划线：u</u>
-            </li>
-            <li>
-                <sup>让字体变小显示在上方:sup</sup>
-            </li>
-            <li>
-                <ins>表示插入的字符：ins</ins>
-            </li>
-            <li>
-                <del>带删除线：del</del>
-            </li>
-            <li>
-                <code>表示此为程序代码：code
-                    
-                </code>
-            </li>
-            <li>
-                <pre>预格式化。就是你敲在源码里是什么格式。在页面上就显示什么格式。一般跟code配合使用？。</pre> 
-            </li>
+            <li>var patt=new RegExp("\\w");</li>    
+            <li>var patt=/\w+/;</li>
         </ul>
-
-<a href="https://blog.csdn.net/lw277232240/article/details/80628815" title="常用的文本修饰标签">参考文献</a><br/>
-<a href="https://tool.oschina.net/commons?type=2" title="html转义字符参考文献">html的转义字符</a>
+        上面的<span title="注意引号">"\\w"和/\w+/被称为模式</span>。<br/>
+        对于第二个方法，每个模式被两个<i>斜杠符</i>包含，
+        而其中的&nbsp;<b>\w</b>&nbsp;称为<u><b>元字符</b></u>，<b title="加号">+</b>为量词。此外还有<span title="方括号">[ ]</span>，
+        这三种元素以及普通字符共同组成一个所谓的模式。(可以只有元字符或普通字符，但不能只有量词或方括号)<br/>
+        第二种方法称为perl方法。<br/>
+        对于第一种方法，因为元字符为<span title="\w">反斜杠+w</span>，所以需要再在前面加一个转义字符（反斜杠）来表示。<br/>
+        <br/>举例：var patt=new RegExp('s+')或var patt=/s+/<br/>
+        这里的s为普通字符，+为量词。<br/>
+        
+        <br/>模式后还可以规定修饰符，修饰符有三个：<br/>
+        <table cellspacing="0">
+            <tr>
+                <td>i</td>
+                <td>匹配时忽略大小写</td>   
+            </tr>
+            <tr>
+                <td>g</td>
+                <td title="否则默认只会匹配第一个符合表达式的字段">匹配所有符合表达式的字段</td>
+            </tr>
+            <tr>
+                <td>m</td>
+                <td title="???????">执行多行匹配</td>
+            </tr>
+        </table> 
+        如：var patt=new RegExp('s+','i')或var patt=/s+/i<br/>
+        在第一种方法中，修饰符作为第二个参数。在第二种方法中修饰符放在第二个斜杠后。
     </div>
-<div>
-    https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener
-    用此替代on事件
+    <div class="text2">
+        <h2 class="titleForIndex" data-index="2">元字符</h2>
+        元字符(Metacharacter)包括以下几种：
+        <table cellspacing="0">
+            <tr>
+                <td>.</td>
+                <td title="有几个不确定字符就要写几个点">查找除了换行和行结束符的所有<b>单个</b>字符(包括标点和其他特殊符号)</td>
+            </tr>
+            <tr>
+                <td>\w</td>
+                <td>查找单个字符(只包括数字和字母)</td>
+            </tr>
+            <tr>
+                <td title="小写的w变大写的W即取'非'，后面以此类推">\W</td>
+                <td>查找非单个字符(即数字和字母以外的)</td>
+            </tr>
+            <tr>
+                <td>\d</td>
+                <td>查找单个数字</td>
+            </tr>
+            <tr>
+                <td>\D</td>
+                <td>查找单个非数字字符</td>
+            </tr>
+            <tr>
+                <td>\s</td>
+                <td title="包括：空格、换行、回车、制表、翻页、垂直换行符">查找空白字符</td>
+            </tr>
+            <tr>
+                <td>\S</td>
+                <td>查找非空白字符</td>
+            </tr>
+            <tr>
+                <td>\b</td>
+                <td>仅查找位于单词首的字符(串)，如在'Running'中找'\\bning'则找不到，但在'ning123'或'$%&ning'中能找到，因为前面不是
+                    <b>字母或数字</b></td>
+            </tr>
+            <tr>
+                <td>\B</td>
+                <td>查找位于单词中或单词尾的字符串，与上面规则相对</td>
+            </tr>
+            <tr>
+                <td>\0</td>
+                <td>查找null</td>
+            </tr>
+            <tr>
+                <td>\n</td>
+                <td>查找换行符</td>
+            </tr>
+            <tr>
+                <td>\f</td>
+                <td>查找换页符</td>
+            </tr>
+            <tr>
+                <td>\r</td>
+                <td>查找回车符</td>
+            </tr>
+            <tr>
+                <td>\t</td>
+                <td>查找制表符</td>
+            </tr>
+            <tr>
+                <td>\v</td>
+                <td>查找垂直制表符</td>
+            </tr>
+            <tr>
+                <td>\xxx</td>
+                <td>查找以八进制数xxx规定的字符，<span title="W的ASCII为127">如在'World'里查找'\\127'能找到W</span></td>
+            </tr>
+            <tr>
+                <td>\xdd</td>
+                <td>查找以十六进制数dd规定的字符，<span title="注意这里是x+两位数">如在'World'里查找'\\x57'能找到W</span></td>
+            </tr>
+            <tr>
+                <td>\uxxxx</td>
+                <td>查找以十六进制数 xxxx 规定的 Unicode 字符</td>
+            </tr>
+        </table>
+        那么问在字符串'__ning'中查找表达式'\\bning'能够找到吗？<br/><br/>
+        <span class="cover">不能，因为下划线和字母、数字一样属于<b><i>单词字符</i></b>。</span>
+    </div>
+    <div class="text1">
+        <h2 class="titleForIndex" data-index="3">量词</h2>
+        量词包括以下几种：(注意量词只会对其紧邻的前一个字符起作用，如下面的abc*，星号只对c起作用)
+        <table cellspacing="0">
+            <tr>
+                <td>+</td>
+                <td>匹配一个以上此类字符串，如在'hello world'里查找'\\w+'则会返回'hello'。而找'\\w'会只返回单个'h'</td>
+            </tr>
+            <tr>
+                <td>abc*</td>
+                <td>匹配ab、abc、abcc、abccc、...。<span title="一般不建议使用这个量词">当我们查找'a*'或'\\w*'时会出现匹配空的情况，如返回'a,,,a,a'。因为此为匹配<b>零个</b>或多个</span></td>
+            </tr>
+            <tr>
+                <td>abc?</td>
+                <td>匹配包含零个或一个目标字符串，a、ab、abc，但没有abcc...</td>
+            </tr>
+            <tr>
+                <td>c{x}</td>
+                <td>匹配连续的x个c</td>
+            </tr>
+            <tr>
+                <td>c{x,y}</td>
+                <td>匹配连续的x~y个c</td>
+            </tr>
+            <tr>
+                <td>abc$</td>
+                <td>匹配满足abc的字符串且c必须为字符串的结尾。(注意这里是字符串结尾，而不像\B是单词结尾)</td>
+            </tr>   
+            <tr>
+                <td>^abc</td>   
+                <td>a必须为字符串的开头</td>
+            </tr>
+            <tr>
+                <td>?=abc</td>
+                <td>匹配任何后面紧跟abc的字符串，使用时要加括号，如：'z(?=abc)'</td>
+            </tr>
+            <tr>
+                <td>?!abc</td>
+                <td>匹配任何其后没有紧接指定字符串abc的字符串，同样要加括号。</td>
+            </tr>
+        </table>
+        那么问在'123abcabcabc'中查找'(?=abc)'会得到什么？<br/><br/>
+
+        <span class="cover">得到',,'即三个空字符，因为(?=abc)前面没有加字符，所以虽然满足了后面的条件，也是空。</span>
+    </div>
+    <div class="text2">
+        <h2 class="titleForIndex" data-index="4">方括号</h2>
+        方括号用于查找某个范围内的字符
+        <table cellspacing="0">
+            <tr>
+                <td>[abc]/[a-c]</td>
+                <td>查找属于abc/a-c的字符。也可以为0-9、A-Z、A-z(注意大写字母的编码更小)</td>
+            </tr>
+            <tr>
+                <td>[^abc]/[^a-c]</td>
+                <td>查找不属于abc/a-c的字符</td>
+            </tr>
+        </table>
+    </div>
+    <div class="text1">
+        <h2 class="titleForIndex" data-index="5">search(str)</h2>
+        <b>下面几个函数为string对象里支持RegExp类的方法(函数)</b><br/>
+        检索与str匹配的值(str可以是正则表达式或普通字符串，后同)。如：<br/>
+        var str1='abcdefg';<br/>
+        str1.search('cd');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//返回2<br/>
+        返回第一个匹配的位置。注意即使在正则表达式中使用修饰符g，也只会返回第一个。<br/>
+
+    </div>
+    <div class="text2">
+        <h2 class="titleForIndex" data-index="6">match(str)</h2>
+        找到一个或多个str的匹配。<br/>
+        返回匹配得到的结果，为字符串。可以使用修饰符g检索到多个匹配，多个结果用逗号隔开。上面介绍时用的基本是match函数。
+    </div>
+    <div class="text1">
+        <h2 class="titleForIndex" data-index="7">replace(str1,str2)</h2>
+        将匹配到的第一个str1换成str2。可以检索多个。
+
+    </div>
+    <div class="text2">
+        <h2 class="titleForIndex" data-index="8">split()</h2>
+        将字符串分开。注意split里的参数为断点。如：<br/>
+        var string='hello world abc';<br/>
+        string.split(' ');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//返回'hello,world'<br/>
+        string.split('');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//返回'h,l,l,o, ,w,o,r,l,d'<br/>
+        string.split();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//返回'hello world'<br/>
+        string.split('o');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//返回'hell, w,rld abc'<br/>
+    </div>
+<div class="text1">
+    <h2 class="titleForIndex" data-index="9">test(str)</h2>
+    <b>下面三个是RegExp对象中的方法</b><br/>
+    str为被检索的字符串，而不是检索使用的关键字，即在str中检索函数所属RegExp对象。返回布尔值<br/>
+    var re=/cd/;<br/>
+    re.test('abcdefg');<br/>
 </div>
-<div>
-    https://blog.csdn.net/beyondsunqixin/article/details/78785085 html锚点平滑过渡
+<div class="text2">
+    <h2 class="titleForIndex" data-index="10">exec(str)</h2>
+    在str中检索RegExp对象。返回检索到的字符串。
 </div>
-
-
-
+<div class="text1">
+    <h2 class="titleForIndex" data-index="11">toString()</h2>
+    将RegExp对象转为字符串，这里的字符串为perl方法表示。如：
+    var re=new RegExp('abc+','i');
+    re.toString();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//返回'/abc+/i'
+</div>
 
 </div>
 </div>
