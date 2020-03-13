@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset="gbk"> 
+<title style="font-size:smaller;color: aqua;">HTML笔记</title> 
+<style>
+    *{
+        line-height: 150%;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    body{
+        background-image: url('bg4.jpg');
+        
+    }
+
+    .mainDiv{
+        width: 100%;
+
+    }
+    .logo{
+        width: 30%;
+        margin: 10px;
+        text-align: center;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        line-height: 120px;
+        font-size: 50px;
+        height: 120px;
+        color: rgb(68, 68, 68);
+        /* letter-spacing: 0.2em; */
+        float: left;
+    }
+    .header{
+        height: 120px;
+        margin: 10px;
+        width: 65%;
+        background-color: #807e7e ;
+        font-family: fantasy;
+        text-align: center;
+        line-height: 120px;
+        font-size: 40px;
+        color: white;
+        float: left;
+        /* 设置文本行高与div高度一致就可使其垂直居中，而水平居中使用text-align=center
+         */
+        box-shadow: 10px 10px 5px #807e7eb9;
+        border-radius: 10px;
+    }
+    .index{
+        width: 28%;
+        margin: 10px;
+        padding: 0px;
+        /* border:solid 1px #0000ff; */
+        background-color: rgba(132, 192, 230, 0.692);
+        text-align: center;
+        float: left;
+        color: white;
+        position: relative;
+        left:40px;
+        box-shadow: 10px 10px 5px rgba(132, 192, 230,0.692);
+        /* box-shadow语法：box-shadow: h-shadow v-shadow blur spread color inset;
+        前四个为像素值，分别代表水平、竖直方向的阴影偏移距离，模糊距离，阴影大小。
+        后两个分别为颜色和从外层的阴影（开始时）改变阴影内侧阴影？ */
+        border-radius: 10px;
+    }
+    .content{
+        width: 60%;
+        margin: 10px 20px;
+        float: right;
+        position: relative;
+        right: 30px;
+        /* border-radius: 10px; */
+        /* background-color: rgba(156, 156, 156, 0.849); */
+    }
+    div.text1{
+        color: black;
+        background-color: #e2dfdfc2;
+        padding: 10px 20px;
+        border-radius: 10px;
+    }
+    div.text2{
+        color: #ffffff;
+        background-color: #4d4d4dbe;
+        padding: 10px 20px;
+        border-radius: 10px;
+
+    }
+    .titleForIndex{
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    ul{
+        padding-left: 20px;
+    }
+    div.text1 table{
+        border-left:solid black 1px;
+        border-top: solid black 1px;
+        padding: 0px;
+    }
+
+    div.text1 table td{
+        border-right: solid black 1px;
+        border-bottom: solid black 1px;
+        padding:3px 10px;
+    }   
+    div.text2 table{
+        border-left:solid white 1px;
+        border-top: solid white 1px;
+        padding: 0px;
+    }
+
+    div.text2 table td{
+        border-right: solid white 1px;
+        border-bottom: solid white 1px;
+        padding:3px 10px;
+    }
+    a{
+        text-decoration: none;
+        color: green;
+    }
+</style>
+<script>
+    window.onload=function(){
+        var oIndex=document.getElementById('index');
+        var oContent=document.getElementById('content');
+        var oStyleContent=window.getComputedStyle(oContent);
+        //这里使用getComputedStyle获取最终样式值。因为oIndex.style只能获取内联样式，而我们的
+        //样式是在style标签里定义的。
+        var iHt=parseInt(oIndex.style.height);
+        oIndex.style.height=(iHt>800?iHt:800)+'px';
+        var oMainDiv=document.getElementById('mainDiv');
+        var oStyleMainDiv=window.getComputedStyle(oMainDiv);
+        oMainDiv.style.height=((parseInt(oStyleContent.height)>800?parseInt(oStyleContent.height):800)+160)+'px';
+        
+        //alert(oStyleContent.height+''+oStyleMainDiv.height);
+
+        // alert(oContent.style.height);
+    };
+</script>
+</head>
+<body>
+<div style="position: relative;" class="mainDiv" id="mainDiv">
+<div class="logo" style="float: left;">
+    My&nbsp&nbsp&nbspHTML  
+</div>
+<div id="header" class="header" style="float: left;">
+HTML笔记</div>
+<div id="index" class="index" style="float: left;" >
+    目录
+</div>
+<div id="content" class="content">
+    
+    <div class="text1">
+        <h2 class="titleForIndex" data-index="1">html常用文本标签</h2>
+        <ul>
+            <li><Strong>表强调：strong</Strong> </li>
+            <li>
+                <em>表示语气强调以倾斜的方式显现：em</em>
+            </li>
+            <li>
+               <i>表倾斜：i</i>
+            </li>
+            <li>
+                <b>加粗：b</b>
+            </li>
+            <li>
+                <small>小字显示：small</small>
+            </li>
+            <li>
+                <cite>表示引用：cite</cite>
+            </li>
+            <li>
+                <sub>让字体变小：sub</sub>
+            </li>
+            <li>
+                <u>下划线：u</u>
+            </li>
+            <li>
+                <sup>让字体变小显示在上方:sup</sup>
+            </li>
+            <li>
+                <ins>表示插入的字符：ins</ins>
+            </li>
+            <li>
+                <del>带删除线：del</del>
+            </li>
+            <li>
+                <code>表示此为程序代码：code
+                    
+                </code>
+            </li>
+            <li>
+                <pre>预格式化。就是你敲在源码里是什么格式。在页面上就显示什么格式。一般跟code配合使用？。</pre> 
+            </li>
+        </ul>
+
+<a href="https://blog.csdn.net/lw277232240/article/details/80628815" title="常用的文本修饰标签">参考文献</a><br/>
+<a href="https://tool.oschina.net/commons?type=2" title="html转义字符参考文献">html的转义字符</a>
+    </div>
+<div>
+    https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener
+    用此替代on事件
+</div>
+<div>
+    https://blog.csdn.net/beyondsunqixin/article/details/78785085 html锚点平滑过渡
+</div>
+
+
+
+
+</div>
+</div>
+
+
+</body>
+</html>

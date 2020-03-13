@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="gbk"> 
+<title>菜鸟教程(runoob.com)</title>
+<style>
+img 
+{
+	float:right;
+}
+	ul>li{
+list-style: none;
+/* float: left; */
+}
+	div
+{
+	border:solid 2px yellow;
+	}
+	div.float{
+float:left;
+		/* //background-color:#0000ff; */
+	}
+	
+</style>
+</head>
+
+<body>
+<p>在下面的段落中，我们添加了一个 <b>float:right</b> 的图片。
+	导致图片将会浮动在段落的右边。</p>
+<p>
+<img src="logocss.gif" width="95" height="84" />
+这是一些文本。这是一些文本。这是一些文本。
+这是一些文本。这是一些文本。这是一些文本。
+这是一些文本。这是一些文本。这是一些文本。
+这是一些文本。这是一些文本。这是一些文本。
+这是一些文本。这是一些文本。这是一些文本。
+<br><br><br>在正常文档流中，分为块元素和内联元素，对于前者，占据一整行，后者可以多个分占一整行。而float是在正常文档流之外，新建了一个“漂浮的空间”，其并不占据标准流的空间，所以float元素可以和标准流元素重合。对于一组连续的float（多个相邻元素都是float），共同占据一个独立于标准流的空间，其起点位于第一个元素的原有标准流位置，而每个之后的float元素都会（以left为例）左贴于前一个元素，当然，位置不够要换行。直到出现一个非float元素。而这个新的非float元素会紧贴前一个非float元素。具体例子见下。
+
+</p>
+	<h1>浮动图</h1>
+<div style="width:400px; height:300px;">
+	<div class="float" style="width:100px; height:100px;"></div>
+	<div class="float" style="width:100px; height:100px;"></div>
+	<div class="float" style="width:100px; height:100px;"></div>
+	<div class="float" style="width:100px; height:100px;"></div>
+	
+	<div class="float" style="width:100px; height:100px;"></div>
+	<div class="float" style="width:100px; height:100px;"></div>
+	<div class="float" style="width:100px; height:100px;"></div>
+	<div class="float" style="width:100px; height:100px;"></div>
+	<div  style="width:100px; height:150px;border:dashed 4px black;background-color:#DC143C" >
+		</div>
+	<input type="button" value="fuck" style="position:relative;width:50px" >
+	<img src="logocss.gif" style="border:solid;float:none;" width="95" height="30">
+	<div style="width:20px; height:20px;border:solid 3px black;background-color:#DC143C"></div>
+	<div class="float" style="width:100px; height:100px;"></div>
+	<div style="width:100px; height:150px;border:dashed 4px black;background-color:#DC143C" >
+		</div>
+	</div>
+	
+<p>对于上面几个元素，有以下几种：1：9个次级的、黄色边框、白色背景、左浮动的div；2：3个次级的、黑色虚线边框、
+	红色背景、标准文档流的div；3：按钮fuck，标准文件流；4：图片logo，标准文件流；5：1个大的、黄色的
+	、白色背景的父级div块。
+	可以看到对于位于标准流的div是会和浮动的div重合的，但位于标准流的按钮和图片
+	（或者段落也一样），浏览器并不会让他们和div重合，而是保证其水平高度紧邻前一个
+	标准文件流的基础上，并且范围不超过父级div的基础上，给其定位。这三个条件有时并
+	不能满足（非div元素之间不重合、水平高度紧邻前元素、范围不超过父级元素），比如
+	最后一个标准流的红div块，这时优先满足前两个条件。总之，不重叠是最优先的标准。
+	而本段文字的起始水平位置肯定是位于总div的底部。同时围绕着其内部的最后一个
+	float块，但是会和内部最后一个标准流的红背景块重合。思考为什么。
+	因为<b>首先要保证float元素和非float元素不重合</b>，而红框和文字重合是因为它超出了
+	其父级元素的范围，活该重合。
+	</p>
+	<p style="float:left;color:blue;width:500px;border-style:ridge;">注意此段蓝字，设置的为float，
+	但是也并不会和前面那段标准流的文本重合，可以推测，只有div之间可以因为
+		float和非float重合。但是会被下一段非float黄字文本包围。该段
+	文字限定了宽度。如果不是float的话，就算为此宽度，下面黄字也会另起一行，而
+	现在因为float属性而被黄字包围。</p>
+	<p style="color:yellow;">这是一些文本。这是一些文本。这是一些文本。
+这是一些文本。这是一些文本。这是一些文本。
+这是一些文本。这是一些文本。这是一些文本。
+这是一些文本。这是一些文本。这是一些文本。
+这是一些文本。这是一些文本。这是一些文本。
+这是一些文本。这是一些文本。这是一些文本。
+这是一些文本。这是一些文本。这是一些文本。
+这是一些文本。这是一些文本。这是一些文本。
+这是一些文本。这是一些文本。这是一些文本。
+这是一些文本。这是一些文本。这是一些文本。
+这是一些文本。这是一些文本。这是一些文本。
+这是一些文本。这是一些文本。这是一些文本。
+这是一些文本。这是一些文本。这是一些文本。
+这是一些文本。这是一些文本。这是一些文本。
+这是一些文本。这是一些文本。这是一些文本。
+这是一些文本。这是一些文本。这是一些文本。
+这是一些文本。这是一些文本。这是一些文本。
+这是一些文本。这是一些文本。这是一些文本。
+这是一些文本。这是一些文本。这是一些文本。
+这是一些文本。这是一些文本。这是一些文本。</p>
+</body>
+
+</html>

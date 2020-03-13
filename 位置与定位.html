@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="gbk"> 
+<title>菜鸟教程(runoob.com)</title>
+<style>
+*
+{
+	padding:0px;	
+
+	/* //margin:0px 2px 0px 4px;
+	//如果去掉上面margin：0，而适用下面两句，可以明显看出页面有大约2px的左边距; */
+	margin-top:0px;
+	margin-bottom:0px;
+}
+p
+{
+	background-color:#DEB887;
+}
+p.padding
+{
+	padding-top:25px;
+	padding-bottom:25px;
+	padding-right:50px;
+	padding-left:50px;
+}
+p.margin
+	{
+	margin:25px 50px 25px 50px;
+	}
+p.static
+{
+position:static;
+left:100px;
+}
+p.absolute
+{
+position:absolute;
+color:#0000ff;
+left:50px;
+}
+p.relative
+{
+position:relative;
+left:100px;
+/* //top:100px; */
+color:#dc143c;
+	}
+p.fixed
+{
+	position:fixed;
+	left:100px;
+	top:30px;
+	}
+p.sticky
+{
+	position:sticky;
+	position:-webkit-sticky;
+	top:0;
+	color:#7fff00;
+	}
+div.flow
+{
+	overflow:auto;
+	background-color:lightblue;
+	height:100px;
+	width:300px;
+	}
+	
+</style>
+</head>
+
+<body>
+	<p>注意本页面默认margin不为0（在不设置通用样式的情况下）。</p>
+	<p>注意在css或js里使用//注释时也要在句尾加分号;</p>
+	<h1>边距</h1>
+<p>这是一个没有指定padding或margin的段落。</p>
+<p style="border:solid 10px;">这是一个没有指定padding或margin的段落，但有边框。</p>
+<p class="padding">这是一个指定padding的段落。当指定三个参数时，分别为上、左右、下。当
+指定两个参数时，分别为上、右。参数间用空格隔开。<br>不能为负值，会出现意想不到的情况。</p>
+<p class="margin">这是一个指定margin的段落。</p>
+	<p>可以看出背景颜色包括边框里面的，即内容+padding</p>
+	<h1>定位</h1>
+<p class="static">这是一个静态定位的段落，可以试着更改left值，并不会影响位置，
+	说明静态定位不能再设定具体的位置。它只能顺着自然文本排序方式排列。<br><br></p>
+	<p class="relative"> 
+	这是一个相对定位的段落1，其参照物为自己本身默认的static位置。
+		移动相对定位元素，但它原本所占的空间不会改变。也即相对定位也是可以出现
+	重叠的情况的。
+	</p>
+	
+	
+	<p class="absolute">这是一个绝对定位的段落，可以试着更改left值，位置相对于最近的<u><b>已定位</b></u>
+		(这里的已定位必须为<b>显式指定过非static定位方式，默认的或显式的static都不算</b>)父元素，
+	如果元素没有已定位的父元素，那么它的位置相对于html。在这里，它的父元素为body，也即html。
+	<br>如果只设定了absolute而没有设定具体的偏移值，则其位置与文档流相同，<b>但是，却不占用
+		文档流空间，也即虽然和流位置相同，但只是悬空存在，后面的模块可以覆盖在其上。</b>
+	比如下面的相对定位段落2号，就把这个绝对定位的文本一部分覆盖了。
+		<br>这里因为只定义了left，而上下两个方向的数值没有规定，这两个方向上为static。
+<br>如果同时设定上下、或左右偏移量，优先适用上、左偏移。
+	<br>还有，一般p标签为块级元素，即会自动填充最后一行空白的部分。而绝对定位的文本会变为
+		内联元素。给普通的p标签设定特定的width也会变为块级元素。关于块元素和
+		内联元素，见百度百科<a href="https://baike.baidu.com/item/%E5%9D%97%E5%85%83%E7%B4%A0/6997452?fr=aladdin">块元素</a>。内联标签可以包含于块级标签中，成为它的子元素，而反过来则不成立。
+		</p>
+	<p class="relative"> 
+	这是一个相对定位的段落2，其参照物为自己本身默认的static位置。</p>
+	<p class="fixed">
+		这是一个固定定位的段落，移动滚轮其位置不变。其文本位置与文档流无关，也不占用
+		文档流空间。<b>但必须同时确定上下和左右两个方向上的偏移量。</b></p>
+	<p class="sticky">
+		这是一个粘性定位的段落。移动滚轮导致该段落将要离开屏幕时，会黏在屏幕边缘。
+		否则其定位方式与relative相同。
+	</p>
+	<br><br><br><br><br><br><br><br><br><br><br><br>
+	<p>
+		关于z轴叠加，设置z-index，值越大则在上面。对于非static定位段落，其默认
+		z-index为0；而static默认最下面（在其他块都没设定z-index时），也即其
+		默认index值为大于-1小于0。<br>
+		相同z-index值的两个，位于文档流后面的在更上面。
+	</p>
+	<p>当relative元素里又有一个relative元素的时候，内部元素的偏移量是相对于父级元素的。
+		此时，父级元素就是上一级定位元素。<br>
+		对于父级元素为static的情况，上一级定位元素不为父级元素。反之则是。<br>
+		对于offsetLeft和offsetTop两个参数，其值一定为相对于上一级定位元素的偏移量。
+		注意与父级元素的区别。<a href="https://blog.csdn.net/w390058785/article/details/80461845">offsetLeft的用法<a></p>
+	<h1>浮动</h1>
+	<div class="flow">
+		使用overflow属性来设置某一文本框的宽高不足以容纳其中的所有文字时的行为。<br>
+		auto为自动添加滚轮，只在文本超过范围时添加。<br>
+		scroll为强制添加滚轮，无论装得下装不下都加。<br>
+		hiden为隐藏多余文本，也不加滚轮。<br>
+		visible为显示多余文本，也不加滚轮。文本会溢出框外。此为默认值。<br>
+	</div>
+		
+		
+		
+		
+	<p>	
+		在html里的文档流中，在代码中回车、空格、多个空格最后都会显示成单个空格，如果想打上述符号，需要用<br>、&nbsp。对于
+中文文档，有时回车并不会出现空格。
+		
+		<br><br><br><br><br><br><br><br><br><br><br><br>
+	</p>
+</body>
+
+</html>
