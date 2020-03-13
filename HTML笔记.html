@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head> 
-<meta charset="gbk"> 
-<title style="font-size:smaller;color: aqua;">HTML�ʼ�</title> 
+<meta charset="utf-8"> 
+<title style="font-size:smaller;color: aqua;">HTML笔记</title> 
 <style>
     *{
         line-height: 150%;
@@ -40,7 +40,7 @@
         font-size: 40px;
         color: white;
         float: left;
-        /* �����ı��и���div�߶�һ�¾Ϳ�ʹ�䴹ֱ���У���ˮƽ����ʹ��text-align=center
+        /* 设置文本行高与div高度一致就可使其垂直居中，而水平居中使用text-align=center
          */
         box-shadow: 10px 10px 5px #807e7eb9;
         border-radius: 10px;
@@ -57,9 +57,9 @@
         position: relative;
         left:40px;
         box-shadow: 10px 10px 5px rgba(132, 192, 230,0.692);
-        /* box-shadow�﷨��box-shadow: h-shadow v-shadow blur spread color inset;
-        ǰ�ĸ�Ϊ����ֵ���ֱ����ˮƽ����ֱ�������Ӱƫ�ƾ��룬ģ�����룬��Ӱ��С��
-        �������ֱ�Ϊ��ɫ�ʹ�������Ӱ����ʼʱ���ı���Ӱ�ڲ���Ӱ�� */
+        /* box-shadow语法：box-shadow: h-shadow v-shadow blur spread color inset;
+        前四个为像素值，分别代表水平、竖直方向的阴影偏移距离，模糊距离，阴影大小。
+        后两个分别为颜色和从外层的阴影（开始时）改变阴影内侧阴影？ */
         border-radius: 10px;
     }
     .content{
@@ -122,8 +122,8 @@
         var oIndex=document.getElementById('index');
         var oContent=document.getElementById('content');
         var oStyleContent=window.getComputedStyle(oContent);
-        //����ʹ��getComputedStyle��ȡ������ʽֵ����ΪoIndex.styleֻ�ܻ�ȡ������ʽ�������ǵ�
-        //��ʽ����style��ǩ�ﶨ��ġ�
+        //这里使用getComputedStyle获取最终样式值。因为oIndex.style只能获取内联样式，而我们的
+        //样式是在style标签里定义的。
         var iHt=parseInt(oIndex.style.height);
         oIndex.style.height=(iHt>800?iHt:800)+'px';
         var oMainDiv=document.getElementById('mainDiv');
@@ -142,65 +142,65 @@
     My&nbsp&nbsp&nbspHTML  
 </div>
 <div id="header" class="header" style="float: left;">
-HTML�ʼ�</div>
+HTML笔记</div>
 <div id="index" class="index" style="float: left;" >
-    Ŀ¼
+    目录
 </div>
 <div id="content" class="content">
     
     <div class="text1">
-        <h2 class="titleForIndex" data-index="1">html�����ı���ǩ</h2>
+        <h2 class="titleForIndex" data-index="1">html常用文本标签</h2>
         <ul>
-            <li><Strong>��ǿ����strong</Strong> </li>
+            <li><Strong>表强调：strong</Strong> </li>
             <li>
-                <em>��ʾ����ǿ������б�ķ�ʽ���֣�em</em>
+                <em>表示语气强调以倾斜的方式显现：em</em>
             </li>
             <li>
-               <i>����б��i</i>
+               <i>表倾斜：i</i>
             </li>
             <li>
-                <b>�Ӵ֣�b</b>
+                <b>加粗：b</b>
             </li>
             <li>
-                <small>С����ʾ��small</small>
+                <small>小字显示：small</small>
             </li>
             <li>
-                <cite>��ʾ���ã�cite</cite>
+                <cite>表示引用：cite</cite>
             </li>
             <li>
-                <sub>�������С��sub</sub>
+                <sub>让字体变小：sub</sub>
             </li>
             <li>
-                <u>�»��ߣ�u</u>
+                <u>下划线：u</u>
             </li>
             <li>
-                <sup>�������С��ʾ���Ϸ�:sup</sup>
+                <sup>让字体变小显示在上方:sup</sup>
             </li>
             <li>
-                <ins>��ʾ������ַ���ins</ins>
+                <ins>表示插入的字符：ins</ins>
             </li>
             <li>
-                <del>��ɾ���ߣ�del</del>
+                <del>带删除线：del</del>
             </li>
             <li>
-                <code>��ʾ��Ϊ������룺code
+                <code>表示此为程序代码：code
                     
                 </code>
             </li>
             <li>
-                <pre>Ԥ��ʽ��������������Դ������ʲô��ʽ����ҳ���Ͼ���ʾʲô��ʽ��һ���code���ʹ�ã���</pre> 
+                <pre>预格式化。就是你敲在源码里是什么格式。在页面上就显示什么格式。一般跟code配合使用？。</pre> 
             </li>
         </ul>
 
-<a href="https://blog.csdn.net/lw277232240/article/details/80628815" title="���õ��ı����α�ǩ">�ο�����</a><br/>
-<a href="https://tool.oschina.net/commons?type=2" title="htmlת���ַ��ο�����">html��ת���ַ�</a>
+<a href="https://blog.csdn.net/lw277232240/article/details/80628815" title="常用的文本修饰标签">参考文献</a><br/>
+<a href="https://tool.oschina.net/commons?type=2" title="html转义字符参考文献">html的转义字符</a>
     </div>
 <div>
     https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener
-    �ô����on�¼�
+    用此替代on事件
 </div>
 <div>
-    https://blog.csdn.net/beyondsunqixin/article/details/78785085 htmlê��ƽ������
+    https://blog.csdn.net/beyondsunqixin/article/details/78785085 html锚点平滑过渡
 </div>
 
 
