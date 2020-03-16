@@ -3,178 +3,14 @@
 <head> 
 <meta charset="utf-8"> 
 <title style="font-size:smaller;color: aqua;">正则表达式</title> 
-<style>
-    *{
-        line-height: 150%;
-        font-family: Arial, Helvetica, sans-serif;
-    }
-    body{
-        background-image: url('bg4.jpg');
-        margin: 0px;
-    }
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="sc.css" rel="stylesheet">
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js1ForPages.js"></script>
 
-    .mainDiv{
-        width: 100%;
 
-    }
-    #logoAndHeader{
-        height: 140px;
-        /* margin: -18px -18px 0px -18px; */
-        padding: 0px;
-        background-color: #e2dfdfc2;
-        border-radius: 5px;
-    }
-    .logo{
-        width: 30%;
-        margin: 10px;
-        text-align: center;
-        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-        line-height: 120px;
-        font-size: 50px;
-        height: 120px;
-        color: rgb(68, 68, 68);
-        /* letter-spacing: 0.2em; */
-        float: left;
-    }
-    .header{
-        height: 120px;
-        margin: 10px;
-        width: 65%;
-        background-color: #807e7e ;
-        font-family: fantasy;
-        text-align: center;
-        line-height: 120px;
-        font-size: 40px;
-        color: white;
-        float: left;
-        /* 设置文本行高与div高度一致就可使其垂直居中，而水平居中使用text-align=center
-         */
-        box-shadow: 10px 10px 5px #807e7eb9;
-        border-radius: 10px;
-    }
-    .index{
-        width: 28%;
-        margin: 20px 10px;
-        padding: 0px;
-        /* border:solid 1px #0000ff; */
-        background-color: rgba(132, 192, 230, 0.692);
-        text-align: left;
-        float: left;
-        color:   	#2E8B57;
-        position: relative;
-        left:40px;
-        box-shadow: 10px 10px 5px rgba(132, 192, 230,0.692);
-        /* box-shadow语法：box-shadow: h-shadow v-shadow blur spread color inset;
-        前四个为像素值，分别代表水平、竖直方向的阴影偏移距离，模糊距离，阴影大小。
-        后两个分别为颜色和从外层的阴影（开始时）改变阴影内侧阴影？ */
-        border-radius: 10px;
-        font-size: 20px;
-    }
-    ol li{
-        margin:6px;
-    }
-    .content{
-        width: 60%;
-        margin: 20px 20px;
-        float: right;
-        position: relative;
-        right: 30px;
-        /* border-radius: 10px; */
-        /* background-color: rgba(156, 156, 156, 0.849); */
-    }
-    div.text1{
-        color: black;
-        background-color: #e2dfdfc2;
-        padding: 10px 20px;
-        border-radius: 10px;
-    }
-    div.text2{
-        color: #ffffff;
-        background-color: #4d4d4dbe;
-        padding: 10px 20px;
-        border-radius: 10px;
 
-    }
-    .titleForIndex{
-        font-family: Arial, Helvetica, sans-serif;
-    }
-    ul{
-        padding-left: 20px;
-    }
-    div.text1 table{
-        margin:20px;
-        border-left:solid black 1px;
-        border-top: solid black 1px;
-        padding: 0px;
-    }
-
-    div.text1 table td{
-        border-right: solid black 1px;
-        border-bottom: solid black 1px;
-        padding:3px 10px;
-    }   
-    div.text2 table{
-        margin:20px;
-        border-left:solid white 1px;
-        border-top: solid white 1px;
-        padding: 0px;
-    }
-
-    div.text2 table td{
-        border-right: solid white 1px;
-        border-bottom: solid white 1px;
-        padding:3px 10px;
-    }
-    a{
-        text-decoration: none;
-        color: green;
-    }
-    li a{
-        color: inherit;
-    }
-
-    div.text1 span.cover{
-        background-color: black;
-    }
-    div.text1 span.cover:hover{
-        background-color: #ffffff00;
-    }
-    div.text2 span.cover{
-        background-color: white;
-    }
-    div.text2 span.cover:hover{
-        background-color: #ffffff00;
-    }
-</style>
-<script>
-    window.onload=function(){
-        var oIndex=document.getElementById('index');
-        var oContent=document.getElementById('content');
-        var oStyleContent=window.getComputedStyle(oContent);
-        //这里使用getComputedStyle获取最终样式值。因为oIndex.style只能获取内联样式，而我们的
-        //样式是在style标签里定义的。
-        var iHt=parseInt(oIndex.style.height);
-        oIndex.style.height=(iHt>800?iHt:800)+'px';
-        var oMainDiv=document.getElementById('mainDiv');
-        var oStyleMainDiv=window.getComputedStyle(oMainDiv);
-        oMainDiv.style.height=((parseInt(oStyleContent.height)>800?parseInt(oStyleContent.height):800)+180)+'px';
-        //alert(oStyleContent.height+''+oStyleMainDiv.height);
-
-        // alert(oContent.style.height);
-
-        //自动填充目录：
-        var aTitleOfText=document.getElementsByClassName('titleForIndex');
-        var oOl=document.getElementById('ulOfIndex');
-        for(var i=0;i<aTitleOfText.length;i++)
-        {
-            var node=document.createElement('li');
-            aTitleOfText[i].id='textTitle'+i;
-            node.innerHTML='<a href=#'+aTitleOfText[i].id+'>'+aTitleOfText[i].innerHTML+'</a>';
-            oOl.appendChild(node);
-        }
-
-    };
-</script>
 </head>
 <body>
 <div style="position: relative;" class="mainDiv" id="mainDiv">
@@ -186,8 +22,41 @@
         正则表达式</div>
 
     </div>
-
-
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button> 
+        此处疑似为适应移动端的代码，电脑端实际不会执行-->
+            <a class="navbar-brand" href="#" style="color: salmon;">Tomoyo</a>
+          </div>
+          
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                 aria-expanded="false">其它篇目</a>
+                    <ul class="dropdown-menu">
+                    <li><a href="HTML笔记.html">HTML笔记</a></li>
+                    <li><a href="位置与定位.html">位置与定位</a></li>
+                    <li><a href="正则表达式.html">正则表达式</a></li>
+                    <li><a href="字符串操作.html">字符串操作</a></li>
+                    <li><a href="float.html">float</a></li>
+                    <li><a href="bootstrap笔记.html">bootstrap笔记</a></li>
+                    <li><a href="jquery笔记.html">jquery笔记</a></li>
+                    <li><a href="JS笔记.html">JS笔记</a></li>
+                    </ul>
+              </li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
 
 
 <div id="index" class="index" style="float: left;" >
@@ -197,7 +66,7 @@
     </Ol>   
 </div>
 <div id="content" class="content">
-    <div class="text1">
+    <div>
         <h2 class="titleForIndex" data-index="1">
             创建正则表达式
         </h2>
@@ -233,7 +102,7 @@
         如：var patt=new RegExp('s+','i')或var patt=/s+/i<br/>
         在第一种方法中，修饰符作为第二个参数。在第二种方法中修饰符放在第二个斜杠后。
     </div>
-    <div class="text2">
+    <div>
         <h2 class="titleForIndex" data-index="2">元字符</h2>
         元字符(Metacharacter)包括以下几种：
         <table cellspacing="0">
@@ -314,7 +183,7 @@
         那么问在字符串'__ning'中查找表达式'\\bning'能够找到吗？<br/><br/>
         <span class="cover">不能，因为下划线和字母、数字一样属于<b><i>单词字符</i></b>。</span>
     </div>
-    <div class="text1">
+    <div>
         <h2 class="titleForIndex" data-index="3">量词</h2>
         量词包括以下几种：(注意量词只会对其紧邻的前一个字符起作用，如下面的abc*，星号只对c起作用)
         <table cellspacing="0">
@@ -359,7 +228,7 @@
 
         <span class="cover">得到',,'即三个空字符，因为(?=abc)前面没有加字符，所以虽然满足了后面的条件，也是空。</span>
     </div>
-    <div class="text2">
+    <div>
         <h2 class="titleForIndex" data-index="4">方括号</h2>
         方括号用于查找某个范围内的字符
         <table cellspacing="0">
@@ -373,7 +242,7 @@
             </tr>
         </table>
     </div>
-    <div class="text1">
+    <div>
         <h2 class="titleForIndex" data-index="5">search(str)</h2>
         <b>下面几个函数为string对象里支持RegExp类的方法(函数)</b><br/>
         检索与str匹配的值(str可以是正则表达式或普通字符串，后同)。如：<br/>
@@ -382,12 +251,12 @@
         返回第一个匹配的位置。注意即使在正则表达式中使用修饰符g，也只会返回第一个。<br/>
 
     </div>
-    <div class="text2">
+    <div>
         <h2 class="titleForIndex" data-index="6">match(str)</h2>
         找到一个或多个str的匹配。<br/>
         返回匹配得到的结果，为字符串。可以使用修饰符g检索到多个匹配，多个结果用逗号隔开。上面介绍时用的基本是match函数。
     </div>
-    <div class="text1">
+    <div>
         <h2 class="titleForIndex" data-index="7">replace(str1,str2)</h2>
         将匹配到的第一个str1换成str2。可以检索多个。
 
@@ -401,22 +270,23 @@
         string.split();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//返回'hello world'<br/>
         string.split('o');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//返回'hell, w,rld abc'<br/>
     </div>
-<div class="text1">
+<div>
     <h2 class="titleForIndex" data-index="9">test(str)</h2>
     <b>下面三个是RegExp对象中的方法</b><br/>
     str为被检索的字符串，而不是检索使用的关键字，即在str中检索函数所属RegExp对象。返回布尔值<br/>
     var re=/cd/;<br/>
     re.test('abcdefg');<br/>
 </div>
-<div class="text2">
+<div>
     <h2 class="titleForIndex" data-index="10">exec(str)</h2>
     在str中检索RegExp对象。返回检索到的字符串。
 </div>
-<div class="text1">
+<div>
     <h2 class="titleForIndex" data-index="11">toString()</h2>
     将RegExp对象转为字符串，这里的字符串为perl方法表示。如：
-    var re=new RegExp('abc+','i');
-    re.toString();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//返回'/abc+/i'
+    <pre>
+        var re=new RegExp('abc+','i');
+        re.toString();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//返回'/abc+/i'</pre>
 </div>
 
 </div>

@@ -2,153 +2,57 @@
 <html>
 <head> 
 <meta charset="utf-8"> 
-<title style="font-size:smaller;color: aqua;">JS中的字符串操作(常用)</title> 
-<style>
-    *{
-        line-height: 150%;
-        font-family: Arial, Helvetica, sans-serif;
-    }
-    body{
-        background-image: url('bg4.jpg');
-        
-    }
-
-    .mainDiv{
-        width: 100%;
-
-    }
-    .logo{
-        width: 30%;
-        margin: 10px;
-        text-align: center;
-        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-        line-height: 120px;
-        font-size: 50px;
-        height: 120px;
-        color: rgb(68, 68, 68);
-        /* letter-spacing: 0.2em; */
-        float: left;
-    }
-    .header{
-        height: 120px;
-        margin: 10px;
-        width: 65%;
-        background-color: #807e7e ;
-        font-family: fantasy;
-        text-align: center;
-        line-height: 120px;
-        font-size: 40px;
-        color: white;
-        float: left;
-        /* 设置文本行高与div高度一致就可使其垂直居中，而水平居中使用text-align=center
-         */
-        box-shadow: 10px 10px 5px #807e7eb9;
-        border-radius: 10px;
-    }
-    .index{
-        width: 28%;
-        margin: 10px;
-        padding: 0px;
-        /* border:solid 1px #0000ff; */
-        background-color: rgba(132, 192, 230, 0.692);
-        text-align: center;
-        float: left;
-        color: white;
-        position: relative;
-        left:40px;
-        box-shadow: 10px 10px 5px rgba(132, 192, 230,0.692);
-        /* box-shadow语法：box-shadow: h-shadow v-shadow blur spread color inset;
-        前四个为像素值，分别代表水平、竖直方向的阴影偏移距离，模糊距离，阴影大小。
-        后两个分别为颜色和从外层的阴影（开始时）改变阴影内侧阴影？ */
-        border-radius: 10px;
-    }
-    .content{
-        width: 60%;
-        margin: 10px 20px;
-        float: right;
-        position: relative;
-        right: 30px;
-        /* border-radius: 10px; */
-        /* background-color: rgba(156, 156, 156, 0.849); */
-    }
-    div.text1{
-        color: black;
-        background-color: #e2dfdfc2;
-        padding: 10px 20px;
-        border-radius: 10px;
-    }
-    div.text2{
-        color: #ffffff;
-        background-color: #4d4d4dbe;
-        padding: 10px 20px;
-        border-radius: 10px;
-
-    }
-    .titleForIndex{
-        font-family: Arial, Helvetica, sans-serif;
-    }
-    ul{
-        padding-left: 20px;
-    }
-    div.text1 table{
-        border-left:solid black 1px;
-        border-top: solid black 1px;
-        padding: 0px;
-    }
-
-    div.text1 table td{
-        border-right: solid black 1px;
-        border-bottom: solid black 1px;
-        padding:3px 10px;
-    }   
-    div.text2 table{
-        border-left:solid white 1px;
-        border-top: solid white 1px;
-        padding: 0px;
-    }
-
-    div.text2 table td{
-        border-right: solid white 1px;
-        border-bottom: solid white 1px;
-        padding:3px 10px;
-    }
-    a{
-        text-decoration: none;
-        color: green;
-    }
-</style>
-<script>
-    window.onload=function(){
-        var oIndex=document.getElementById('index');
-        var oContent=document.getElementById('content');
-        var oStyleContent=window.getComputedStyle(oContent);
-        //这里使用getComputedStyle获取最终样式值。因为oIndex.style只能获取内联样式，而我们的
-        //样式是在style标签里定义的。
-        var iHt=parseInt(oIndex.style.height);
-        oIndex.style.height=(iHt>800?iHt:800)+'px';
-        var oMainDiv=document.getElementById('mainDiv');
-        var oStyleMainDiv=window.getComputedStyle(oMainDiv);
-        oMainDiv.style.height=((parseInt(oStyleContent.height)>800?parseInt(oStyleContent.height):800)+160)+'px';
-        
-        //alert(oStyleContent.height+''+oStyleMainDiv.height);
-
-        // alert(oContent.style.height);
-    };
-</script>
+<title style="font-size:smaller;color: aqua;">JS中的字符串操作</title> 
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="sc.css" rel="stylesheet">
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js1ForPages.js"></script>
 </head>
 <body>
 <div style="position: relative;" class="mainDiv" id="mainDiv">
-<div class="logo" style="float: left;">
-    My&nbsp&nbsp&nbspHTML  
-</div>
-<div id="header" class="header" style="float: left;">
-JS中常用的字符串操作</div>
+    <div id="logoAndHeader">
+        <div class="logo" style="float: left;">
+            My&nbsp&nbsp&nbspHTML  
+        </div>
+        <div id="header" class="header" style="float: left;">JS中的字符串操作</div>
+    </div>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#" style="color: salmon;">Tomoyo</a>
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                 aria-expanded="false">其它篇目</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="HTML笔记.html">HTML笔记</a></li>
+                      <li><a href="位置与定位.html">位置与定位</a></li>
+                      <li><a href="正则表达式.html">正则表达式</a></li>
+                      <li><a href="字符串操作.html">字符串操作</a></li>
+                      <li><a href="float.html">float</a></li>
+                      <li><a href="bootstrap笔记.html">bootstrap笔记</a></li>
+                      <li><a href="jquery笔记.html">jquery笔记</a></li>
+                      <li><a href="JS笔记.html">JS笔记</a></li>
+                    </ul>
+              </li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
 <div id="index" class="index" style="float: left;" >
-    目录
+    <h2 style="margin: 15px 25px;">目录</h2>
+    <Ol id="ulOfIndex">
+
+    </Ol>   
 </div>
+
+
 <div id="content" class="content">
-    <div class="text1">
-        <h2 class="titleForIndex" data-index="1">
+    <div>
+        <h2>
             创建字符串
         </h2>
         创建一个字符串变量的两种方式：
@@ -168,8 +72,8 @@ JS中常用的字符串操作</div>
         </ul>
         其中前两种类似于创建字符串的第一种。<br/>
     </div>
-    <div class="text2">
-        <h2  class="titleForIndex" data-index="2">
+    <div>
+        <h2>
             常用的特殊字符
         </h2>
         大部分的标点符号，可以用<b>反斜杠</b>实现转义字符，如：
@@ -194,7 +98,7 @@ JS中常用的字符串操作</div>
         </table>
     </div>
     <div class="text1">
-        <h2 class="titleForIndex" data-index="3">charCodeAt</h2>
+        <h2>charCodeAt()</h2>
         返回在指定的位置的字符的 Unicode 编码（十进制）。如：
         <pre>var str='hello world';
 str.charCodeAt(4);                  //返回第<b>5</b>个字母，即o的 Unicode 编码</pre>
@@ -203,8 +107,8 @@ str.charCodeAt(4);                  //返回第<b>5</b>个字母，即o的 Unico
     </div>
 
 
-    <div class="text2">
-        <h2 class="titleForIndex" data-index="4">字符串与数字互相转换</h2>
+    <div>
+        <h2>字符串与数字互相转换</h2>
         1.转换函数
         <ul>
             <li>parseInt('123.3')：将'123.3'转为整数123，碰到小数点或任意非数字字符停止扫描</li>
@@ -239,20 +143,22 @@ str.charCodeAt(4);                  //返回第<b>5</b>个字母，即o的 Unico
             </li>
         </ul>
     </div>
-    <div class="text1">
-        <h2>concat()</h2>  
-        字符串拼接，如：<br/>
-        var string1='hello';<br/>
-        var string2='world';<br/>
-        var str=string1.concat(string2);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//str为'helloworld'<br/>
+    <div>
+        <h2>concat()</h2>
+        <pre>
+        字符串拼接，如：
+        var string1='hello';
+        var string2='world';
+        var str=string1.concat(string2);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//str为'helloworld'</pre>
         还有一种简单的拼接方法为直接相加，如：
         var str=string1+string2;
     </div>
-    <div class="text2">
+    <div>
         <h2>indexOf()</h2>
-        字符串检索。寻找目标字符串中第一次出现某字符串的位置，如：<br/>
-        var string='hello world';<br/>
-        var order=string.indexOf('wor');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//返回6，因为和数组一样从0开始<br/>
+        字符串检索。寻找目标字符串中第一次出现某字符串的位置，如：
+        <pre>
+        var string='hello world';
+        var order=string.indexOf('wor');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//返回6，因为和数组一样从0开始</pre>
         如果没有找到，则返回-1。<br/>
         此外，lastIndexOf()是从后向前检索，使用方法一样。注意返回的位置是从前数的，即上面例子换为lastIndexOf返回值相同。<br/>
         此外，includes()检索是否存在某字符串，使用方法一样。返回布尔值。

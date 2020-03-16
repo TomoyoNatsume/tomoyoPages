@@ -3,153 +3,53 @@
 <head> 
 <meta charset="utf-8"> 
 <title style="font-size:smaller;color: aqua;">HTML笔记</title> 
-<style>
-    *{
-        line-height: 150%;
-        font-family: Arial, Helvetica, sans-serif;
-    }
-    body{
-        background-image: url('bg4.jpg');
-        
-    }
-
-    .mainDiv{
-        width: 100%;
-
-    }
-    .logo{
-        width: 30%;
-        margin: 10px;
-        text-align: center;
-        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-        line-height: 120px;
-        font-size: 50px;
-        height: 120px;
-        color: rgb(68, 68, 68);
-        /* letter-spacing: 0.2em; */
-        float: left;
-    }
-    .header{
-        height: 120px;
-        margin: 10px;
-        width: 65%;
-        background-color: #807e7e ;
-        font-family: fantasy;
-        text-align: center;
-        line-height: 120px;
-        font-size: 40px;
-        color: white;
-        float: left;
-        /* 设置文本行高与div高度一致就可使其垂直居中，而水平居中使用text-align=center
-         */
-        box-shadow: 10px 10px 5px #807e7eb9;
-        border-radius: 10px;
-    }
-    .index{
-        width: 28%;
-        margin: 10px;
-        padding: 0px;
-        /* border:solid 1px #0000ff; */
-        background-color: rgba(132, 192, 230, 0.692);
-        text-align: center;
-        float: left;
-        color: white;
-        position: relative;
-        left:40px;
-        box-shadow: 10px 10px 5px rgba(132, 192, 230,0.692);
-        /* box-shadow语法：box-shadow: h-shadow v-shadow blur spread color inset;
-        前四个为像素值，分别代表水平、竖直方向的阴影偏移距离，模糊距离，阴影大小。
-        后两个分别为颜色和从外层的阴影（开始时）改变阴影内侧阴影？ */
-        border-radius: 10px;
-    }
-    .content{
-        width: 60%;
-        margin: 10px 20px;
-        float: right;
-        position: relative;
-        right: 30px;
-        /* border-radius: 10px; */
-        /* background-color: rgba(156, 156, 156, 0.849); */
-    }
-    div.text1{
-        color: black;
-        background-color: #e2dfdfc2;
-        padding: 10px 20px;
-        border-radius: 10px;
-    }
-    div.text2{
-        color: #ffffff;
-        background-color: #4d4d4dbe;
-        padding: 10px 20px;
-        border-radius: 10px;
-
-    }
-    .titleForIndex{
-        font-family: Arial, Helvetica, sans-serif;
-    }
-    ul{
-        padding-left: 20px;
-    }
-    div.text1 table{
-        border-left:solid black 1px;
-        border-top: solid black 1px;
-        padding: 0px;
-    }
-
-    div.text1 table td{
-        border-right: solid black 1px;
-        border-bottom: solid black 1px;
-        padding:3px 10px;
-    }   
-    div.text2 table{
-        border-left:solid white 1px;
-        border-top: solid white 1px;
-        padding: 0px;
-    }
-
-    div.text2 table td{
-        border-right: solid white 1px;
-        border-bottom: solid white 1px;
-        padding:3px 10px;
-    }
-    a{
-        text-decoration: none;
-        color: green;
-    }
-</style>
-<script>
-    window.onload=function(){
-        var oIndex=document.getElementById('index');
-        var oContent=document.getElementById('content');
-        var oStyleContent=window.getComputedStyle(oContent);
-        //这里使用getComputedStyle获取最终样式值。因为oIndex.style只能获取内联样式，而我们的
-        //样式是在style标签里定义的。
-        var iHt=parseInt(oIndex.style.height);
-        oIndex.style.height=(iHt>800?iHt:800)+'px';
-        var oMainDiv=document.getElementById('mainDiv');
-        var oStyleMainDiv=window.getComputedStyle(oMainDiv);
-        oMainDiv.style.height=((parseInt(oStyleContent.height)>800?parseInt(oStyleContent.height):800)+160)+'px';
-        
-        //alert(oStyleContent.height+''+oStyleMainDiv.height);
-
-        // alert(oContent.style.height);
-    };
-</script>
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="sc.css" rel="stylesheet">
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js1ForPages.js"></script>
 </head>
 <body>
 <div style="position: relative;" class="mainDiv" id="mainDiv">
-<div class="logo" style="float: left;">
-    My&nbsp&nbsp&nbspHTML  
-</div>
-<div id="header" class="header" style="float: left;">
-HTML笔记</div>
+    <div id="logoAndHeader">
+        <div class="logo" style="float: left;">
+            My&nbsp&nbsp&nbspHTML  
+        </div>
+        <div id="header" class="header" style="float: left;">HTML笔记</div>
+    </div>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#" style="color: salmon;">Tomoyo</a>
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                 aria-expanded="false">其它篇目</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="HTML笔记.html">HTML笔记</a></li>
+                      <li><a href="位置与定位.html">位置与定位</a></li>
+                      <li><a href="正则表达式.html">正则表达式</a></li>
+                      <li><a href="字符串操作.html">字符串操作</a></li>
+                      <li><a href="float.html">float</a></li>
+                      <li><a href="bootstrap笔记.html">bootstrap笔记</a></li>
+                      <li><a href="jquery笔记.html">jquery笔记</a></li>
+                      <li><a href="JS笔记.html">JS笔记</a></li>
+                    </ul>
+              </li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
 <div id="index" class="index" style="float: left;" >
-    目录
+    <h2 style="margin: 15px 25px;">目录</h2>
+    <Ol id="ulOfIndex"></Ol>   
 </div>
 <div id="content" class="content">
     
     <div class="text1">
-        <h2 class="titleForIndex" data-index="1">html常用文本标签</h2>
+        <h2>html常用文本标签</h2>
         <ul>
             <li><Strong>表强调：strong</Strong> </li>
             <li>
@@ -183,17 +83,47 @@ HTML笔记</div>
                 <del>带删除线：del</del>
             </li>
             <li>
-                <code>表示此为程序代码：code
-                    
+                <code>
+                    表示此为程序代码：code<br/>
+                    var oDiv=document.getElementById('content');
                 </code>
             </li>
             <li>
-                <pre>预格式化。就是你敲在源码里是什么格式。在页面上就显示什么格式。一般跟code配合使用？。</pre> 
+                <pre>预格式化：pre<br/>就是你敲在源码里是什么格式。在页面上就显示什么格式。一般跟code配合使用？。</pre> 
             </li>
         </ul>
-
+        注意pre标签的开始和结束标签的位置，判断是否要紧跟文本。
 <a href="https://blog.csdn.net/lw277232240/article/details/80628815" title="常用的文本修饰标签">参考文献</a><br/>
 <a href="https://tool.oschina.net/commons?type=2" title="html转义字符参考文献">html的转义字符</a>
+    </div>
+    <div>
+        <h2>常用转义字符</h2>
+        <table>
+            <tr>
+                <th>字符</th>
+                <th>转义字符</th>
+            </tr>
+            <tr>
+                <td>"</td>
+                <td>&amp;quot;</td>
+            </tr>
+            <tr>
+                <td>&</td>
+                <td>&amp;amp;</td>
+            </tr>
+            <tr>
+                <td>&lt;</td>
+                <td>&amp;lt;</td>
+            </tr>
+            <tr>
+                <td>&gt;</td>
+                <td>&amp;gt;</td>
+            </tr>
+            <tr>
+                <td>不断开空格</td>
+                <td>&amp;nbsp;</td>
+            </tr>
+        </table>
     </div>
 <div>
     https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener
@@ -202,8 +132,6 @@ HTML笔记</div>
 <div>
     https://blog.csdn.net/beyondsunqixin/article/details/78785085 html锚点平滑过渡
 </div>
-
-
 
 
 </div>

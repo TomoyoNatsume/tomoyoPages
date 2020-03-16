@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset="utf-8"> 
+<title style="font-size:smaller;color: aqua;">JS笔记</title> 
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="sc.css" rel="stylesheet">
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js1ForPages.js"></script>
+</head>
+<body>
+<div style="position: relative;" class="mainDiv" id="mainDiv">
+    <div id="logoAndHeader">
+        <div class="logo" style="float: left;">
+            My&nbsp&nbsp&nbspHTML  
+        </div>
+        <div id="header" class="header" style="float: left;">JS笔记</div>
+    </div>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#" style="color: salmon;">Tomoyo</a>
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                 aria-expanded="false">其它篇目</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="HTML笔记.html">HTML笔记</a></li>
+                      <li><a href="位置与定位.html">位置与定位</a></li>
+                      <li><a href="正则表达式.html">正则表达式</a></li>
+                      <li><a href="字符串操作.html">字符串操作</a></li>
+                      <li><a href="float.html">float</a></li>
+                      <li><a href="bootstrap笔记.html">bootstrap笔记</a></li>
+                      <li><a href="jquery笔记.html">jquery笔记</a></li>
+                      <li><a href="JS笔记.html">JS笔记</a></li>
+                    </ul>
+              </li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+<div id="index" class="index" style="float: left;" >
+    <h2 style="margin: 15px 25px;">目录</h2>
+    <Ol id="ulOfIndex">
+
+    </Ol>   
+</div>
+<div class="content" id="content">
+    <div>
+        <h2>定义对象</h2>
+    var person={name:"Jhon" sex:"male" height:"170"};<br/>
+    其中name、sex、height为变量（属性），其后为对应的值。中间的空格可以换为逗号或换行。<br/><br/>
+
+    访问对象的变量：<br/>
+    person.name<br/>
+    或person["name"]<br/>
+
+    对象方法：
+    （相当于c语言里的成员函数）<br/>
+    <pre>
+    changeName:function(newName){
+        return:newName;
+    }
+    </pre>
+    这一段在定义对象时的代码的内部。而在外面调用函数时，和c一样：<br/>
+    person.changeName("Jhonny");<br/>
+    </div>
+    <div>
+    
+    <h2>其他三种定义对象的方法</h2>
+    <ul>
+    <li>使用new关键字<br/>
+    先定义一个函数：(在定义函数的时候，系统会创建一个和函数名同名的类，所以可以使用new来创建对象。)<br/>
+    <pre>
+    function person(name,sex,height){
+        this.name=name;//第一个name为这个类的一个属性，而第二个name为传入的形参
+        this.sex=sex;
+        this.height=height;
+    }
+    var p1=new person('Jhon','male','170');
+</pre></li>
+    <li>使用object类创建对象<br/>
+    先定义一个空的object对象：(由于js为动态语言，因此可以动态地为该对象增加属性和方法)
+    <pre>
+    var person=new object();
+    person.name='Jhon';
+    person.sex='male';</pre>
+</li>
+    <li>使用json语法创建对象
+    即上面第一种定义对象的方法</li>
+</ul>
+</div>
+<div>
+<h2>定义函数</h2>
+    当用以下方法定义匿名函数时：<br/>
+    <pre>
+    var fun=function(){
+        alert('fuck');
+    }</pre> 
+    可以使用fun()来调用函数（为什么？）。此外，还可以在定义时加形参，调用时加实参。<br/>
+
+    对于下面的方法定义的匿名函数：<br/>
+    <pre>
+    (function(m,n){
+        alert(m+n);
+    })(10,20);</pre>
+    其实是定义+调用，也就是本身的内容运行了一遍。<br/>
+    此外，这种方法还可以将第一个括号换为一元操作符，如+-*~!<br/>
+    <pre>
+    +function(m,n){
+        alert(m+n);
+    }(10,20);</pre>
+    还有种写法：<br/>
+    <pre>
+    (function(m,n){
+        alert(m+n);
+    }(10,20));</pre>
+
+</div>
+
+
+
+
+
+</div>
+
+</div>
+</body>
+</html>

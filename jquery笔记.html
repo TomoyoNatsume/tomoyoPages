@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery笔记</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="sc.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js1ForPages.js"></script>
+  </head>
+  <body>
+    <div style="position: relative;" class="mainDiv" id="mainDiv">
+      <div id="logoAndHeader">
+          <div class="logo" style="float: left;">
+              My&nbsp&nbsp&nbspHTML  
+          </div>
+          <div id="header" class="header" style="float: left;">
+          bootstrap笔记</div>
+  
+      </div>
+      <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#" style="color: salmon;">Tomoyo</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                   aria-expanded="false">其它篇目</a>
+                      <ul class="dropdown-menu">
+                        <li><a href="HTML笔记.html">HTML笔记</a></li>
+                        <li><a href="位置与定位.html">位置与定位</a></li>
+                        <li><a href="正则表达式.html">正则表达式</a></li>
+                        <li><a href="字符串操作.html">字符串操作</a></li>
+                        <li><a href="float.html">float</a></li>
+                        <li><a href="bootstrap笔记.html">bootstrap笔记</a></li>
+                        <li><a href="jquery笔记.html">jquery笔记</a></li>
+                        <li><a href="JS笔记.html">JS笔记</a></li>
+                      </ul>
+                </li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
+        <div id="index" class="index" style="float: left;" >
+          <h2 style="margin: 15px 25px;">目录</h2>
+          <Ol id="ulOfIndex">
+          </Ol>
+      </div>
+      <div class="content" id="content">
+        <div>
+          <h2>事件</h2>
+          事件有两种处理方式：
+          <ul>
+            <li>$('p').on('click',function(){...});</li>
+          </ul>
+        </div>
+        <div>
+          <h2>选择器</h2>
+          Query里使用$('p')类似的语句来定义对象，其中的'p'称为选择器。（可以为双引号）
+          下面是几种常用的选择器，其他的选择器见<a href="https://www.runoob.com/jquery/jquery-ref-selectors.html">jQuery选择器</a>
+          <table>
+            <tr>
+              <td>*</td><td>选取所有元素</td></tr>
+            <tr>
+              <td>#idName</td><td>选取id为idName的所有元素</td></tr>
+            <tr>
+              <td>.className</td><td>选取类名为className的所有元素</td></tr>
+            <tr>
+              <td>p</td><td>选取所有p元素</td></tr>
+            <tr>
+              <td>p:first</td><td>选取所有p元素中的第一个p元素</td></tr>
+            <tr>
+              <td>p:last</td><td>选取所有p元素中的最后一个p元素</td></tr>
+            <tr>
+              <td>p:even</td><td>选取所有p元素中第偶数个p元素（注意索引值从0开始，所以这里是第1、3、5...个）</td></tr>
+            <tr>
+              <td>p:odd</td><td>选取所有p元素中的奇数个p元素</td></tr>
+            <tr>
+              <td>p:first-child</td><td>选取那些为其父元素的第一个子元素的所有p元素。注意，区分于下面一条选择器，此条选择器只选择那些p元素为所有子元素中第一个，前面不能有任何<a href="#siblings">同胞元素</a></td></tr>
+            <tr>
+              <td>p:first-of-type</td><td>选取那些为其父元素的第一个p子元素的所有p元素。此条选择器选出的p前面可以有其他任意同胞元素，只要不为p即可</td></tr>
+          </table>
+          注意当一个选择器为：
+          <ul>
+
+            <li>'p ul'表示选取所有属于p元素的子元素的ul元素。这里的子元素包括直接和非直接的</li>
+            <li>'p>ul'表示选取所有p元素的直接子元素中的ul元素。</li>
+            <li>'p,ul'表示选取所有p元素或ul元素（逗号始终表示‘或’）</li>
+          </ul>
+          此外有<a href="https://www.runoob.com/try/trysel.php">选择器检测器</a>。
+        </div>
+
+        <div>
+          <h2>设置属性</h2>
+          使用att()或toggleClass('className')切换元素的类名。在jQuery中toggle的用法基本上是“有就减去，没有就加上”。这里也一样，如果元素已经是这个
+          类名了，就去掉，如果不是该类，就设为该类。如果元素除了这个类还有其他类，<b>其他类不会受影响</b>。
+          <h1>css</h1>
+          使用.css()函数设置样式，如：
+          <pre>
+          $('p').css('background-color','red');
+          或
+          $('p').css({
+            "background-color":"red",
+            "color":"blue"
+          });</pre>
+          注意第二种方法中两句之间要用逗号，而不是分号。而且每个属性及其值都要用引号（单双都行）
+
+        </div>
+        <div>
+          <h2>尺寸</h2>
+        </div>
+        <div>
+          <h2>遍历</h2>
+          <ol>
+            <li>parent()返回被选元素的直接父元素</li>
+            <li>parents()返回所有祖先元素<br/>
+              可以添加参数如'li'指返回所有祖先元素中的li元素
+            </li>
+            <li>parentsUntil('ul')返回直到ul元素之间的所有祖先元素。当然，不包括自己和ul，即双开区间</li>
+            <li>children()返回所有直接子元素<br/>
+              与parents()类似，也可添加参数来进行筛选（下面有类似的函数时不再赘述）<br/>
+              注意，table的直接子元素为tbody，要得到tr元素的话还需要再返回一次子元素。</li>
+            <li>find('li')返回所有后代中的li元素。<br/>
+              用'*'来返回所有元素</li>
+            <li><span id="siblings">siblings()返回所有同胞元素，即属于同一个直接父元素的其他元素</span></li>
+            <li>next()返回下一个同胞元素</li>
+            <li>nextall()返回后面的所有同胞元素</li>
+            <li>nextUntil('ul')返回本元素和ul之间的所有同胞元素，也是双开区间</li>
+            <li>prev()、prevAll()、prevUntil()与上面next对应</li>
+
+          </ol>
+          <h1>过滤</h1>
+          <ol>
+            <li>first()返回JQuery对象(数组)中的第一个对象
+              如$('p div').first() 返回$('p')</li>
+            <li>last()与上面对应</li>
+            <li>eq(n)返回第n+1个元素</li>
+            <li>如$('p').eq(2)等同
+              注意区别于$('p')[2]; 后者返回的是选择器选出来的第三个元素的DOM对象，而前者返回的是这个元素的jQuery对象</li>
+            <li>filter('.className')返回带有className类名的元素</li>
+            <li>not('.className')返回不带有className类名的元素</li>
+          </ol>
+        </div>
+        <div>
+          <h2>Ajax</h2>
+          <ol>
+            <li>load(URL,data,callback)返回URL里的内容到对象中。</li>
+            <li>$.get(URL,callback)返回得到的数据。回调函数里有两个回调参数，第一个参数存放数据内容，第二个存放请求状态</li>
+            <li>$.post(URL,data,callback)用于请求向服务器提交数据。</li>
+          </ol>
+
+        </div>
+
+
+      </div>
+    </div>
+  </body>
+</html>

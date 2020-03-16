@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Bootstrap笔记</title>
+
+    <!-- Bootstrap -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+
+    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+    
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script> -->
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script> -->
+    <!-- 此页面来自于https://v3.bootcss.com/getting-started/#template -->
+
+    <!-- 下面是用到的真正的js、css文件 -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="sc.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js1ForPages.js"></script>
+  </head>
+  <body>
+
+    <div style="position: relative;" class="mainDiv" id="mainDiv">
+      <div id="logoAndHeader">
+          <div class="logo" style="float: left;">
+              My&nbsp&nbsp&nbspHTML  
+          </div>
+          <div id="header" class="header" style="float: left;">
+          bootstrap笔记</div>
+  
+      </div>
+      <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#" style="color: salmon;">Tomoyo</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                   aria-expanded="false">其它篇目</a>
+                      <ul class="dropdown-menu">
+                        <li><a href="HTML笔记.html">HTML笔记</a></li>
+                        <li><a href="位置与定位.html">位置与定位</a></li>
+                        <li><a href="正则表达式.html">正则表达式</a></li>
+                        <li><a href="字符串操作.html">字符串操作</a></li>
+                        <li><a href="float.html">float</a></li>
+                        <li><a href="bootstrap笔记.html">bootstrap笔记</a></li>
+                        <li><a href="jquery笔记.html">jquery笔记</a></li>
+                        <li><a href="JS笔记.html">JS笔记</a></li>
+                      </ul>
+                </li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
+        <div id="index" class="index" style="float: left;" >
+          <h2 style="margin: 15px 25px;">目录</h2>
+          <Ol id="ulOfIndex">
+          </Ol>
+      </div>
+      <div class="content" id='content'>
+        <div>
+          <h2>为dropdown增加淡入淡出效果</h2>
+          这里的下拉菜单(dropdown)为导航条内的，故整体被&lt;li&gt;包含。<br/>
+          首先要知道下拉菜单的同胞元素和父元素分别为一个&lt;a&gt;标签和一个&lt;li&gt;标签。bootstrap里实现切换显示
+          的方法为给其父元素&lt;li&gt;添加一个类：'open'。此外，当打开下拉菜单时，&lt;a&gt;标签中有一个自定义属性aria-expanded将
+          会被设置成true。<br/>
+          要注意&lt;a&gt;标签作为一个中介，我们通过&lt;a&gt;标签的“其他篇目”来点开被隐藏的菜单。而此二者又都被&lt;li&gt;包含。我们点击“其他篇目”的时候
+          在原始bootstrap的js中只会对父元素&lt;li&gt;造成影响，为其增加class，有了这个class='open'，css中的样式表就自动为其子元素
+          &lt;ul&gt;(被隐藏的菜单)改变样式，将其display设为block。<br/>
+          然后我们需要知道在bootstrap.js文件中的大概第810行的Dropdown.prototype.toggle()函数。关于dropdown的所有的处理都是在这个函数里进行的。
+          函数中有几个变量：
+          <ul>
+            <li>$this：代表&lt;a&gt;标签。</li>
+            <li>$parent：代表&lt;li&gt;标签</li>
+            <li>isActive：代表菜单栏是否被激活（通过&lt;li&gt;是否有'open'类来判断）</li>
+          </ul>
+          此外，函数clearMenus()用来将下拉菜单去激活。在本函数定义之前有其定义。这里不论是激活菜单还是去激活，
+          都要先调用此函数。我们要在此函数里添加去激活菜单时需要执行的代码。<br/>
+          紧接着跟着的一段代码：
+          <pre>
+          if(!isActive){
+            ...
+          }</pre>
+          这里面是当控件未激活时执行的，也就是说我们要在这里写激活菜单的代码。<br/>
+          在写代码之前，我们需要在bootstrap.css的.dropdown-menu类中修改几处：
+          <pre>
+          display: block;
+          opacity: 0;
+          transition: opacity 0.3s ease-in;</pre>
+          首先将display改为'block'。因为下拉菜单的显示和隐藏我们要改为在js中实现。其次设置初始透明度为0和透明度的过渡效果。<br/>
+          然后我们在上述的if(!isActive){}的末尾增加代码如下：
+          <pre>
+          var $thisNext=$this.next();
+          $thisNext.css('display','block');
+          if($thisNext.css('display')=='block')
+          $thisNext.css('opacity','1');
+          </pre>
+          这里首先定义$thisNext，即下拉菜单元素&lt;ul&gt;。其次设置其display属性为'block'。然后等待上一步操作完成，
+          改变透明度为1。注意一定要有一个判断'block'是否设置完成的语句，否则可能上一步没有执行完成，就开始改变透明度，
+          渐变效果就不会实现。<br/>
+          相应地，我们在clearMenu()函数中增加以下代码：
+          <pre>
+          var $thisNext=$this.next();
+          $thisNext.css('opacity','0');
+          </pre>
+          首先也是定义变量，其次改变透明度。只有这两步。而改变display的操作需要另外设置一个事件监听器。因为无法在js中判断
+          css的过渡是否进行完毕。如果没有过渡完就改变display，也是不能实现过渡效果的。
+          从而，我们在script中增加如下代码：
+          <pre>
+          document.addEventListener('transitionend',function(){
+            var $DropdownMenu=$('ul.dropdown-menu');        
+            var iOpa=parseInt($DropdownMenu.css('opacity'));
+            if(iOpa==0){
+                $DropdownMenu.css('display','none');
+                return;
+            }
+          })</pre>
+          以实现，当过渡完成<b>且透明度为0时</b>，设置display为'none'。因为过渡完成可能是从0->1，这时不需要在这里设置display。
+        </div>
+        <div>
+          <h2></h2>
+          
+          sr-only属性用于给屏幕阅读器识别，视觉上不会显示出来
+          对于dropdown按钮，有点击事件，位于bootstrap.js的第808行：Dropdown.prototype.toggle。
+        </div>
+        <div>
+          <h2></h2>
+
+
+        </div>
+
+
+
+
+
+
+
+      </div>   
+</div>   
+
+
+  </body>
+</html>
