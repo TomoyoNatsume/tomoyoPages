@@ -1,4 +1,4 @@
-window.onload=function(){
+$().ready(function(){
     var oIndex=document.getElementById('index');
     var oContent=document.getElementById('content');
     var oStyleContent=window.getComputedStyle(oContent);
@@ -48,4 +48,4 @@ window.onload=function(){
     $('ol').attr('type','I');
     $('.index>ol').attr('type','1');
 
-};
+});
