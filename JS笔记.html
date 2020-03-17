@@ -8,8 +8,10 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js1ForPages.js"></script>
+　
 </head>
 <body>
+    <script type="text/javascript" src="dynamicLines.js"></script>
 <div style="position: relative;" class="mainDiv" id="mainDiv">
     <div id="logoAndHeader">
         <div class="logo" style="float: left;">
@@ -44,9 +46,7 @@
       </nav>
 <div id="index" class="index" style="float: left;" >
     <h2 style="margin: 15px 25px;">目录</h2>
-    <Ol id="ulOfIndex">
-
-    </Ol>   
+    <Ol id="ulOfIndex"></Ol>   
 </div>
 <div class="content" id="content">
     <div>
@@ -118,7 +118,12 @@
     (function(m,n){
         alert(m+n);
     }(10,20));</pre>
-
+    另外，在jQuery中，以下写法相当于$(document).ready(function(){...})：
+    <pre>
+    $(function () {
+        ...
+    })</pre>
+    更多见jQuery中的类似写法见：<a href="https://blog.csdn.net/liutianjie/article/details/83928867">参考</a>
 </div>
 
 
@@ -126,7 +131,7 @@
 
 
 </div>
-
 </div>
+
 </body>
 </html>

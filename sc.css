@@ -148,3 +148,7 @@ div.text2 span.cover:hover{
 pre{
     margin-bottom: 0px;
 }
+canvas{
+    position: absolute;
+}
+    

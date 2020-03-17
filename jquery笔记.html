@@ -12,6 +12,7 @@
     <script src="js1ForPages.js"></script>
   </head>
   <body>
+    <script type="text/javascript" src="dynamicLines.js"></script>
     <div style="position: relative;" class="mainDiv" id="mainDiv">
       <div id="logoAndHeader">
           <div class="logo" style="float: left;">
@@ -101,13 +102,13 @@
           类名了，就去掉，如果不是该类，就设为该类。如果元素除了这个类还有其他类，<b>其他类不会受影响</b>。
           <h1>css</h1>
           使用.css()函数设置样式，如：
-          <pre>
-          $('p').css('background-color','red');
-          或
-          $('p').css({
-            "background-color":"red",
-            "color":"blue"
-          });</pre>
+    <pre>
+    $('p').css('background-color','red');
+    或
+    $('p').css({
+      "background-color":"red",
+      "color":"blue"
+    });</pre>
           注意第二种方法中两句之间要用逗号，而不是分号。而且每个属性及其值都要用引号（单双都行）
 
         </div>

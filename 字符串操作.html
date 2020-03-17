@@ -10,6 +10,7 @@
 <script src="js1ForPages.js"></script>
 </head>
 <body>
+    <script type="text/javascript" src="dynamicLines.js"></script>
 <div style="position: relative;" class="mainDiv" id="mainDiv">
     <div id="logoAndHeader">
         <div class="logo" style="float: left;">
@@ -100,8 +101,9 @@
     <div class="text1">
         <h2>charCodeAt()</h2>
         返回在指定的位置的字符的 Unicode 编码（十进制）。如：
-        <pre>var str='hello world';
-str.charCodeAt(4);                  //返回第<b>5</b>个字母，即o的 Unicode 编码</pre>
+        <pre>
+    var str='hello world';
+    str.charCodeAt(4);     //返回第<b>5</b>个字母，即o的 Unicode 编码</pre>
         字符串可以为中文、中英混合，且不考虑单双字节的问题。<br/>
         对应的String.fromCharCode(65)是将65作为&nbsp;Unicode&nbsp;源码转为字符。
     </div>
@@ -145,20 +147,20 @@ str.charCodeAt(4);                  //返回第<b>5</b>个字母，即o的 Unico
     </div>
     <div>
         <h2>concat()</h2>
-        <pre>
         字符串拼接，如：
-        var string1='hello';
-        var string2='world';
-        var str=string1.concat(string2);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//str为'helloworld'</pre>
+    <pre>
+    var string1='hello';
+    var string2='world';
+    var str=string1.concat(string2);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//str为'helloworld'</pre>
         还有一种简单的拼接方法为直接相加，如：
         var str=string1+string2;
     </div>
     <div>
         <h2>indexOf()</h2>
         字符串检索。寻找目标字符串中第一次出现某字符串的位置，如：
-        <pre>
-        var string='hello world';
-        var order=string.indexOf('wor');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//返回6，因为和数组一样从0开始</pre>
+    <pre>
+    var string='hello world';
+    var order=string.indexOf('wor');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//返回6，因为和数组一样从0开始</pre>
         如果没有找到，则返回-1。<br/>
         此外，lastIndexOf()是从后向前检索，使用方法一样。注意返回的位置是从前数的，即上面例子换为lastIndexOf返回值相同。<br/>
         此外，includes()检索是否存在某字符串，使用方法一样。返回布尔值。
