@@ -8,10 +8,9 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js1ForPages.js"></script>
-　
 </head>
 <body>
-    <script type="text/javascript" src="dynamicLines.js"></script>
+<script type="text/javascript" src="dynamicLines.js"></script>
 <div style="position: relative;" class="mainDiv" id="mainDiv">
     <div id="logoAndHeader">
         <div class="logo" style="float: left;">
@@ -125,10 +124,91 @@
     })</pre>
     更多见jQuery中的类似写法见：<a href="https://blog.csdn.net/liutianjie/article/details/83928867">参考</a>
 </div>
+<div>
+    <h2>变量的作用域</h2>
+    与c++不同，js可以在函数中定义函数，甚至可以在实参表中定义函数，这也导致了变量的寿命和作用域与c++不同。在js中，
+    在函数f1(){var a}内的局部变量a，如果在f1中定义一函数f2，如f1(){f2(){}}，则
+</div>
+<div>
+    <h2>运算符优先级</h2>
+    <h3>关联性</h3>
+    关联性决定了拥有相同优先级的运算符的执行顺序。考虑下面这个表达式：
+    <pre>
+    a op b op c</pre>
+    其中op代表运算符，如果是左关联，则相当于在a&nbsp;op&nbsp;b外面加了括号，先执行此步。而如果是右关联，则先执行b&nbsp;op&nbsp;c。最典型的，赋值运算符为右关联。
+    <h3>汇总表</h3>
+    优先级从高到低(20~1)排列
+    <table>
+        <tr>
+            <th>优先级</th>
+            <th>运算符</th>
+            <th>关联性</th>
+            <th>运算符说明</th>
+        </tr>
+        <tr>
+            <td>20</td>
+            <td>()</td>
+            <td>不相关</td>
+            <td>圆括号</td>
+        </tr>
+        <tr>
+            <td>19</td><td>.</td><td>左关联</td><td>成员访问</td>
+        </tr>
+        <tr>
+            <td>[]</td><td>左关联</td><td>数组成员访问</td>
+        </tr>
+        <tr>
+            <td>new</td><td>不相关</td><td>new</td></tr>
+        <tr>
+        <tr>
+            <td>fun()</td><td>左关联</td><td>函数调用</td>
+            
+        </tr>
+        <tr>
+            <td>fun()</td><td>左关联</td><td>函数调用</td>
+        </tr>
+        <tr>
+            <td>?</td><td>左关联</td><td>可选链</td>
+        </tr>
+    </table>
+    <h3>返回值</h3>
+    逗号表达式的一般形式是：表达式1，表达式2，表达式3……表达式n。逗号表达式的求解过程是：先计算表达式1的值，再计算表达式2的值，...
+    一直计算到表达式n的值，最后返回的值是表达式n的值。<br/>
+    ...&&...的返回值并不是布尔值，而是左边或右边表达式的<b>值</b>。如果左边不为false，则返回左边，反之返回右边的值。如果是NaN或undefined等
+    导致的false，则也不会返回false，而是NaN或undefined等。'或'运算符'||'同理。
+    <h3>练习</h3>
+    1.判断下表达式的返回值，以及bol的最终值。（bol无初值）
+    <pre>
+    1!==3&&(bol=7,3&lt;9&&(bol-=3))</pre>
+    虽然括号的优先级最高，但是这里括号的作用只是防止算成(..&&bol)，实际希望它算成...&&(bol-=3)。所以计算时，并不是<b>先算</b>最里面的括号
+    (bol-=3)，而是从左往右（按&&和===原本的关联性），先计算1===3，然后计算bol=7（而不是按优先级，最后才考虑赋值运算符），以此类推。
+    这里可以推理，如果不是这样的话，那么bol=7最后运算，bol-=3就会因为bol没有初值而报错。<br/>
+    同样，可以试验，将前面改为1===3时，整个式子只判断到此就结束，最后bol会无定义。<br/>
+    因此最终返回值为4（而不是true），bol=4。<br/>
+    此外，试验以下表达式：
+    <pre>
+    var a=1;
+    alert(1==3&&a++);</pre>
+    a仍会为1，且返回false。但是++本来的优先级是高于&&和==的，所以这里同样可以推断，并不是优先级高的就优先计算的。
+    2.判断下面表达式的运算顺序    
+    <pre>
+    null !== n.x && null !== n.y && (o = i.x - n.x, m = i.y - n.y, l = o * o + m * m, 
+    l &lt; n.max && (n === y && l >= n.max / 2 && (i.x -= .03 * o, i.y -= .03 * m), 
+    t = (n.max - l) / n.max,r.beginPath(), r.lineWidth = t / 2, 
+    r.strokeStyle = "rgba(" + d.c + "," + (t + .2) + ")", r.moveTo(i.x, i.y),
+    r.lineTo(n.x, n.y), r.stroke(),iCounter++))</pre>
+    <pre>
+    i.x -= .03 * o, i.y -= .03 * m</pre>
+<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Operator_Precedence">参考资料</a>
+
+</div>
 
 
-
-
+null !== n.x && null !== n.y && (o = i.x - n.x, m = i.y - n.y, l = o * o + m * m, 
+l &lt; n.max && (n === y && l >= n.max / 2 && kuo, 
+t = kuo,r.beginPath(), r.lineWidth = t / 2, 
+r.strokeStyle = "rgba(" + d.c + "," + (t + .2) + ")", r.moveTo(i.x, i.y),
+r.lineTo(n.x, n.y), r.stroke(),iCounter++))
 
 </div>
 </div>
