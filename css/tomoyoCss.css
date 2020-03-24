@@ -7,7 +7,7 @@ h2{
     margin:30px 10px;
 }
 body{
-    background-image: url('bg4.jpg');
+    background-image: url('../pic/bg4.jpg');
     margin: 0px;
 }
 
@@ -21,8 +21,9 @@ body{
     /* margin: -18px -18px 0px -18px; */
     padding: 0px;
     background-color: #e2dfdfc2;
-    border-radius: 5px;
+    border-radius: 0px;
     margin-bottom: 0px;
+    user-select: none;
 }
 .logo{
     width: 30%;
@@ -35,12 +36,13 @@ body{
     color: rgb(68, 68, 68);
     /* letter-spacing: 0.2em; */
     float: left;
+    letter-spacing: 2px;
 }
 .header{
-    height: 120px;
-    margin: 10px;
-    width: 65%;
-    background-color: #807e7e ;
+    height: 140px;
+    margin: 0px;
+    width: 70%;
+    background-color: rgb(49,49,57) ;
     font-family: fantasy;
     text-align: center;
     line-height: 120px;
@@ -50,7 +52,9 @@ body{
     /* 设置文本行高与div高度一致就可使其垂直居中，而水平居中使用text-align=center
      */
     box-shadow: 10px 10px 5px #807e7eb9;
-    border-radius: 10px;
+    border-radius: 0px;
+    position: absolute;
+    right:0px;
 }
 .index{
     width: 28%;
@@ -108,11 +112,11 @@ div.text1 table{
     padding: 0px;
 }
 
-div.text1 table td,th{
+div.text1 > table td, div.text1 > table th{
     border-right: solid black 1px;
     border-bottom: solid black 1px;
     padding:3px 10px;
-}   
+}
 div.text2 table{
     margin:20px;
     border-left:solid white 1px;
@@ -120,14 +124,13 @@ div.text2 table{
     padding: 0px;
 }
 
-div.text2 table td,th{
+div.text2 > table td,div.text2 > table th{
     border-right: solid white 1px;
     border-bottom: solid white 1px;
     padding:3px 10px;
 }
 a{
     text-decoration: none;
-    color: rgb(61, 236, 61);
 }
 li a{
     color: inherit;
@@ -151,4 +154,23 @@ pre{
 canvas{
     position: absolute;
 }
-    
+.titleH2{
+    margin:30px auto;
+    text-align:center;
+    position: relative;
+    display: inline-block;
+}  
+.titleLine{
+    width:0;
+    height:2px;
+    background:rgb(49,49,57);
+    transition:width 300ms linear;
+    position:absolute;
+    margin:0 auto;
+    left:0;
+    right:0;
+
+}
+.text2 .titleLine{
+    background:white;
+}

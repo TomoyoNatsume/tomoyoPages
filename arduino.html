@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset="utf-8"> 
+<title style="font-size:smaller;color: aqua;">正则表达式</title> 
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="sc.css" rel="stylesheet">
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js1ForPages.js"></script>
+
+
+
+</head>
+<body>
+    <script type="text/javascript" src="dynamicLines.js"></script>
+<div style="position: relative;" class="mainDiv" id="mainDiv">
+    <div id="logoAndHeader">
+        <div class="logo" style="float: left;">
+            My&nbsp&nbsp&nbspHTML  
+        </div>
+        <div id="header" class="header" style="float: left;">
+        正则表达式</div>
+
+    </div>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button> 
+        此处疑似为适应移动端的代码，电脑端实际不会执行-->
+            <a class="navbar-brand" href="#" style="color: salmon;">Tomoyo</a>
+          </div>
+          
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                 aria-expanded="false">其它篇目</a>
+                    <ul class="dropdown-menu">
+                    <li><a href="HTML笔记.html">HTML笔记</a></li>
+                    <li><a href="位置与定位.html">位置与定位</a></li>
+                    <li><a href="正则表达式.html">正则表达式</a></li>
+                    <li><a href="字符串操作.html">字符串操作</a></li>
+                    <li><a href="float.html">float</a></li>
+                    <li><a href="bootstrap笔记.html">bootstrap笔记</a></li>
+                    <li><a href="jquery笔记.html">jquery笔记</a></li>
+                    <li><a href="JS笔记.html">JS笔记</a></li>
+                    </ul>
+              </li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+
+
+<div id="index" class="index" style="float: left;" >
+    <h2 style="margin: 15px 25px;">目录</h2>
+    <Ol id="ulOfIndex">
+
+    </Ol>   
+</div>
+<div id="content" class="content">
+  <div>
+    <h2>串口通信</h2>
+    write()和print()都用于向串口输出数据，其具体区别有：
+    <ul>
+      <li>print()输出数据为先将数据转为单个字符，然后转为ASCII码。wirte为直接发送ASCII码。比如print(61)和write(61)，前者会将61先转为对应的字符串'61'，再发送'61'对应的两字节的ASCII码，而后者直接发送ASCII码61，所以在串口监视器中，获得的数据为61和a（因为a的ASCII码为61）</li>
+      <li>print()可以设置转换进制方式，比如print(80,HEX)可以在80转为字符串时先转成16进制，最后字符串为'50'。而write()不行</li>
+      <li>println()可以后面自动输出一个回车。而没有writeln()</li>
+    </ul>
+    read()和peek()的区别：
+    <ul>
+      <li>peek()一次读取一个字节，但之后并不会将该字节的数据从缓冲区删除，而read()会</li>
+    </ul>
+    注意串口都是传输字符串的ASCII码。
+  </div>
+  <div>
+    <h2>使用LCD1602输出自定义图案</h2>
+    控制命令表为：
+    <img src="pic/LCD1602cmd.PNG">
+    <ul>
+      <li>指令1：清显示，指令码01H,光标复位到地址00H位置。</li>
+      <li>指令2：光标复位，光标返回到地址00H。符号*指0、1均可。</li>
+      <li>指令3：光标和显示模式设置 I/D：光标移动方向，高电平右移，低电平左移 S:屏幕上所有文字是否左移或者右移。高电平表示有效，低电平则无效。</li>
+      <li>指令4：显示开关控制。 D：控制整体显示的开与关，高电平表示开显示，低电平表示关显示 C：控制光标的开与关，高电平表示有光标，低电平表示无光标 B：控制光标是否闪烁，高电平闪烁，低电平不闪烁。</li>
+      <li>指令5：光标或显示移位 S/C：高电平时移动显示的文字，低电平时移动光标。</li>
+      <li>指令6：功能设置命令 DL：高电平时为4位总线，低电平时为8位总线 N：低电平时为单行显示，高电平时双行显示 F: 低电平时显示5x7的点阵字符，高电平时显示5x10的点阵字符。</li>
+      <li>指令7：字符发生器RAM地址设置。</li>
+      <li>指令8：DDRAM地址设置。</li>
+      <li>指令9：读忙信号和光标地址 BF：为忙标志位，高电平表示忙，此时模块不能接收命令或者数据，如果为低电平表示不忙。</li>
+    </ul>
+    
+  </div>
+
+
+
+</div>
+</body>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset="utf-8"> 
+<title style="font-size:smaller;color: aqua;">Bootstrap笔记</title> 
+<link href="../css/bootstrap.css" rel="stylesheet">
+<link href="../css/tomoyoCss.css" rel="stylesheet">
+<link href="../css/menu-bar.css" rel="stylesheet" >
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/jsForContentPages.js"></script>
+<script src='../js/menu-bar.js'></script>
+
+
+</head>
+<body>
+    <script type="text/javascript" src="../js/dynamicLines.js"></script>
+<div style="position: relative;" class="mainDiv" id="mainDiv">
+    <div id="logoAndHeader">
+        <div class="logo" style="float: left;">
+            My&nbsp&nbsp&nbspHTML  
+        </div>
+        <div id="header" class="header" style="float: left;">
+        Bootstrap笔记</div>
+    </div>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button> 
+        此处疑似为适应移动端的代码，电脑端实际不会执行-->
+            <a class="navbar-brand" href="#" style="color: salmon;">Tomoyo</a>
+          </div>
+          
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    aria-expanded="false">ALL</a>
+                    <ul class="dropdown-menu">
+                    </ul>
+                </li>
+                <li><a>&gt;</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                 aria-expanded="false">HTML</a>
+                    <ul class="dropdown-menu">
+                    </ul>
+              </li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+
+    <div id="wrapper">
+        <div class="menu">				
+            <img id="menu-bg" src="../pic/bg4.PNG" />
+            <ul>
+                <li><a href="">HTML</a></li>
+                <li><a href="">游戏</a></li>
+                <li><a href="">日语</a></li>
+                <li><a href="">菜谱</a></li>
+            </ul>                
+        </div>	
+            
+        <div class="screen">
+            <div class="navbar"></div>
+            <div class="list">
+                <div class="item">
+                    <div class="img">目录</div>
+
+                </div>
+            </div>                            
+                                
+            <div class="burger">
+                <div class="x"></div>
+                <div class="z"></div>
+            </div>        
+        </div>	
+     </div>	
+      <div class="content" id='content'>
+        <div>
+          <h2>为dropdown增加淡入淡出效果</h2>
+          这里的下拉菜单(dropdown)为导航条内的，故整体被&lt;li&gt;包含。<br/>
+          首先要知道下拉菜单的同胞元素和父元素分别为一个&lt;a&gt;标签和一个&lt;li&gt;标签。bootstrap里实现切换显示
+          的方法为给其父元素&lt;li&gt;添加一个类：'open'。此外，当打开下拉菜单时，&lt;a&gt;标签中有一个自定义属性aria-expanded将
+          会被设置成true。<br/>
+          要注意&lt;a&gt;标签作为一个中介，我们通过&lt;a&gt;标签的“其他篇目”来点开被隐藏的菜单。而此二者又都被&lt;li&gt;包含。我们点击“其他篇目”的时候
+          在原始bootstrap的js中只会对父元素&lt;li&gt;造成影响，为其增加class，有了这个class='open'，css中的样式表就自动为其子元素
+          &lt;ul&gt;(被隐藏的菜单)改变样式，将其display设为block。<br/>
+          然后我们需要知道在bootstrap.js文件中的大概第810行的Dropdown.prototype.toggle()函数。关于dropdown的所有的处理都是在这个函数里进行的。
+          函数中有几个变量：
+          <ul>
+            <li>$this：代表&lt;a&gt;标签。</li>
+            <li>$parent：代表&lt;li&gt;标签</li>
+            <li>isActive：代表菜单栏是否被激活（通过&lt;li&gt;是否有'open'类来判断）</li>
+          </ul>
+          此外，函数clearMenus()用来将下拉菜单去激活。在本函数定义之前有其定义。这里不论是激活菜单还是去激活，
+          都要先调用此函数。我们要在此函数里添加去激活菜单时需要执行的代码。<br/>
+          紧接着跟着的一段代码：
+    <pre>
+    if(!isActive){
+      ...
+    }</pre>
+          这里面是当控件未激活时执行的，也就是说我们要在这里写激活菜单的代码。<br/>
+          在写代码之前，我们需要在bootstrap.css的.dropdown-menu类中修改几处：
+    <pre>
+    display: block;
+    opacity: 0;
+    transition: opacity 0.3s ease-in;</pre>
+          首先将display改为'block'。因为下拉菜单的显示和隐藏我们要改为在js中实现。其次设置初始透明度为0和透明度的过渡效果。<br/>
+          然后我们在上述的if(!isActive){}的末尾增加代码如下：
+    <pre>
+    var $thisNext=$this.next();
+    $thisNext.css('display','block');
+    if($thisNext.css('display')=='block')
+    $thisNext.css('opacity','1');
+    </pre>
+          这里首先定义$thisNext，即下拉菜单元素&lt;ul&gt;。其次设置其display属性为'block'。然后等待上一步操作完成，
+          改变透明度为1。注意一定要有一个判断'block'是否设置完成的语句，否则可能上一步没有执行完成，就开始改变透明度，
+          渐变效果就不会实现。<br/>
+          相应地，我们在clearMenu()函数中增加以下代码：
+    <pre>
+    var $thisNext=$this.next();
+    $thisNext.css('opacity','0');
+    </pre>
+          首先也是定义变量，其次改变透明度。只有这两步。而改变display的操作需要另外设置一个事件监听器。因为无法在js中判断css的过渡是否进行完毕。如果没有过渡完就改变display，也是不能实现过渡效果的。
+          从而，我们在script中增加如下代码：
+    <pre>
+    document.addEventListener('transitionend',function(){
+      var $DropdownMenu=$('ul.dropdown-menu');        
+      var iOpa=parseInt($DropdownMenu.css('opacity'));
+      if(iOpa==0){
+          $DropdownMenu.css('display','none');
+          return;
+      }
+    })</pre>
+          以实现，当过渡完成<b>且透明度为0时</b>，设置display为'none'。因为过渡完成可能是从0->1，这时不需要在这里设置display。
+          js为异步运行，所以必须依赖回调函数来实现某些功能。
+        </div>
+        <div>
+          <h2></h2>
+          
+          sr-only属性用于给屏幕阅读器识别，视觉上不会显示出来
+        </div>
+        <div>
+          <h2>暂时用到的组件</h2>
+          <ul>
+            <li>通过<kbd>kbd</kbd>标签用来显示用户输入的内容。</li>
+            <li><button type="button" class="btn btn-primary">按钮控件</button>&nbsp;给button元素添加类class="btn btn-primary"来使用该控件。类似的，还有btn-success、btn-info等</li>
+            <li><span class="badge">20</span>通过‘徽章’组件添加一个醒目的用于表示未读信息等。</li>
+          </ul><br>
+          
+
+        </div>
+        <div>
+          <h2>添加进度条</h2>
+        </div>
+
+
+
+
+
+
+      </div>   
+</div>   
+
+
+  </body>
+</html>

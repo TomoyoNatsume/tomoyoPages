@@ -1097,13 +1097,13 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #337ab7;
+  color:white;
   text-decoration: none;
 }
 a:hover,
 a:focus {
-  color: #23527c;
-  text-decoration: underline;
+  color: #337ab7;
+  text-decoration: none;
 }
 a:focus {
   outline: 5px auto -webkit-focus-ring-color;
@@ -3522,7 +3522,7 @@ tbody.collapse.in {
   top: 100%;
   left: 0;
   z-index: 1000;
-  display: block;
+  display: none;
   float: left;
   min-width: 160px;
   padding: 5px 0;
@@ -4593,6 +4593,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 .navbar-inverse {
   background-color: #222;
   border-color: #080808;
+  user-select: none;
 }
 .navbar-inverse .navbar-brand {
   color: #9d9d9d;

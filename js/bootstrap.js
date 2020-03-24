@@ -843,7 +843,7 @@ if (typeof jQuery === 'undefined') {
         .toggleClass('open')
         .trigger($.Event('shown.bs.dropdown', relatedTarget))
 
-      //       //下面是修改
+      //下面是修改
       var $thisNext=$this.next();
       $thisNext.css('display','block');
       if($thisNext.css('display')=='block')

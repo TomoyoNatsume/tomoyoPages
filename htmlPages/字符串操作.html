@@ -2,55 +2,88 @@
 <html>
 <head> 
 <meta charset="utf-8"> 
-<title style="font-size:smaller;color: aqua;">JS中的字符串操作</title> 
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href="sc.css" rel="stylesheet">
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js1ForPages.js"></script>
+<title style="font-size:smaller;color: aqua;">字符串操作</title> 
+<link href="../css/bootstrap.css" rel="stylesheet">
+<link href="../css/tomoyoCss.css" rel="stylesheet">
+<link href="../css/menu-bar.css" rel="stylesheet" >
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/jsForContentPages.js"></script>
+<script src='../js/menu-bar.js'></script>
+
+
 </head>
 <body>
-    <script type="text/javascript" src="dynamicLines.js"></script>
+    <script type="text/javascript" src="../js/dynamicLines.js"></script>
 <div style="position: relative;" class="mainDiv" id="mainDiv">
     <div id="logoAndHeader">
         <div class="logo" style="float: left;">
             My&nbsp&nbsp&nbspHTML  
         </div>
-        <div id="header" class="header" style="float: left;">JS中的字符串操作</div>
+        <div id="header" class="header" style="float: left;">
+        字符串操作</div>
     </div>
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
+            <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button> 
+        此处疑似为适应移动端的代码，电脑端实际不会执行-->
             <a class="navbar-brand" href="#" style="color: salmon;">Tomoyo</a>
           </div>
+          
+          <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    aria-expanded="false">ALL</a>
+                    <ul class="dropdown-menu">
+                    </ul>
+                </li>
+                <li><a>&gt;</a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                 aria-expanded="false">其它篇目</a>
+                 aria-expanded="false">HTML</a>
                     <ul class="dropdown-menu">
-                      <li><a href="HTML笔记.html">HTML笔记</a></li>
-                      <li><a href="位置与定位.html">位置与定位</a></li>
-                      <li><a href="正则表达式.html">正则表达式</a></li>
-                      <li><a href="字符串操作.html">字符串操作</a></li>
-                      <li><a href="float.html">float</a></li>
-                      <li><a href="bootstrap笔记.html">bootstrap笔记</a></li>
-                      <li><a href="jquery笔记.html">jquery笔记</a></li>
-                      <li><a href="JS笔记.html">JS笔记</a></li>
                     </ul>
               </li>
             </ul>
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
       </nav>
-<div id="index" class="index" style="float: left;" >
-    <h2 style="margin: 15px 25px;">目录</h2>
-    <Ol id="ulOfIndex">
 
-    </Ol>   
-</div>
+    <div id="wrapper">
+        <div class="menu">				
+            <img id="menu-bg" src="../pic/bg4.PNG" />
+            <ul>
+                <li><a href="">HTML</a></li>
+                <li><a href="">游戏</a></li>
+                <li><a href="">日语</a></li>
+                <li><a href="">菜谱</a></li>
+            </ul>                
+        </div>	
+            
+        <div class="screen">
+            <div class="navbar"></div>
+            <div class="list">
+                <div class="item">
+                    <div class="img">目录</div>
 
-
+                </div>
+            </div>                            
+                                
+            <div class="burger">
+                <div class="x"></div>
+                <div class="z"></div>
+            </div>        
+        </div>	
+     </div>	
 <div id="content" class="content">
     <div>
         <h2>

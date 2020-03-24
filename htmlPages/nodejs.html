@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset="utf-8"> 
+<title style="font-size:smaller;color: aqua;">nodejs笔记</title> 
+<link href="../css/bootstrap.css" rel="stylesheet">
+<link href="../css/tomoyoCss.css" rel="stylesheet">
+<link href="../css/menu-bar.css" rel="stylesheet" >
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/jsForContentPages.js"></script>
+<script src='../js/menu-bar.js'></script>
+
+
+</head>
+<body>
+    <script type="text/javascript" src="../js/dynamicLines.js"></script>
+<div style="position: relative;" class="mainDiv" id="mainDiv">
+    <div id="logoAndHeader">
+        <div class="logo" style="float: left;">
+            My&nbsp&nbsp&nbspHTML  
+        </div>
+        <div id="header" class="header" style="float: left;">
+          nodejs笔记</div>  
+    </div>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button> 
+        此处疑似为适应移动端的代码，电脑端实际不会执行-->
+            <a class="navbar-brand" href="#" style="color: salmon;">Tomoyo</a>
+          </div>
+          
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    aria-expanded="false">ALL</a>
+                    <ul class="dropdown-menu">
+                    </ul>
+                </li>
+                <li><a>&gt;</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                 aria-expanded="false">HTML</a>
+                    <ul class="dropdown-menu">
+                    </ul>
+              </li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+
+    <div id="wrapper">
+        <div class="menu">				
+            <img id="menu-bg" src="../pic/bg4.PNG" />
+            <ul>
+                <li><a href="">HTML</a></li>
+                <li><a href="">游戏</a></li>
+                <li><a href="">日语</a></li>
+                <li><a href="">菜谱</a></li>
+            </ul>                
+        </div>	
+            
+        <div class="screen">
+            <div class="navbar"></div>
+            <div class="list">
+                <div class="item">
+                    <div class="img">目录</div>
+
+                </div>
+            </div>                            
+                                
+            <div class="burger">
+                <div class="x"></div>
+                <div class="z"></div>
+            </div>        
+        </div>	
+     </div>	
+<div id="content" class="content">
+  <div>
+    <h2>创建服务器</h2>
+    最简单的一个服务器程序：
+    <pre>
+    const http=require('http');
+    var server=http.createServer(function(req,res){
+    console.log(req.url);
+    res.write("abc");
+    res.end('hello world');
+    });
+    server.listen(8080);</pre>
+  
+  </div>
+  <div>
+    <h2>回调函数</h2>
+    下面是一个回调实例：
+    <pre>
+    var fs=require('fs');
+    var data=fs.readFile('b1.txt',function(err,data){
+        if(err)return console.log(err);
+        console.log(data);
+    });
+    console.log('End');</pre>
+      这里会先输出'End'，然后输出data。
+      异步编程中，代码按顺序进行时，不会等某个读取文件的进程或某计算过程，而继续执行。所以在这里谁快谁输出。<br/>
+      node的文件系统中的每个方法都有同步和异步两个版本，这里文件读取的同步版本为readFileSync()。
+  </div>
+  <div>
+    <h2>事件机制</h2>
+    首先通过
+    <pre>
+    var events=require('events');</pre>
+    来获取事件模块。而这个事件模块里只有一个<b>对象</b>：EventEmitter。然后执行下列代码：
+    <pre>
+    var event = new events.EventEmitter(); 
+    event.on('some_event', function() { 
+        console.log('some_event 事件触发'); 
+    }); 
+    setTimeout(function() { 
+        event.emit('some_event'); 
+    }, 1000);</pre>
+      这个代码中，emit('some_event')用来发放事件，而event.on('some_event',fun)用来监听事件。fun为事件监听器的回调函数。
+      <br/>这里的发放事件函数和监听事件的回调函数都可以设置参数。前者的参数为字符串。
+  </div>
+
+
+
+</div>
+</div>
+
+
+
+</body>
+</html>

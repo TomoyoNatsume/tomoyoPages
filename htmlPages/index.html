@@ -2,26 +2,26 @@
 <html>
 <head> 
 <meta charset="utf-8"> 
-<title style="font-size:smaller;color: aqua;">正则表达式</title> 
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href="sc.css" rel="stylesheet">
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js1ForPages.js"></script>
-
+<title style="font-size:smaller;color: aqua;" id='indexTitle'></title> 
+<link href="../css/bootstrap.css" rel="stylesheet">
+<link href="../css/tomoyoCss.css" rel="stylesheet">
+<link href="../css/menu-bar.css" rel="stylesheet" >
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/jsForContentPages.js"></script>
+<script src='../js/menu-bar.js'></script>
 
 
 </head>
 <body>
-    <script type="text/javascript" src="dynamicLines.js"></script>
+    <script type="text/javascript" src="../js/dynamicLines.js"></script>
 <div style="position: relative;" class="mainDiv" id="mainDiv">
     <div id="logoAndHeader">
         <div class="logo" style="float: left;">
             My&nbsp&nbsp&nbspHTML  
         </div>
         <div id="header" class="header" style="float: left;">
-        正则表达式</div>
-
+        Tomoyo</div>
     </div>
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
@@ -40,18 +40,17 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    aria-expanded="false">ALL</a>
+                    <ul class="dropdown-menu">
+                    </ul>
+                </li>
+                <li><a>&gt;</a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                 aria-expanded="false">其它篇目</a>
+                 aria-expanded="false">HTML</a>
                     <ul class="dropdown-menu">
-                    <li><a href="HTML笔记.html">HTML笔记</a></li>
-                    <li><a href="位置与定位.html">位置与定位</a></li>
-                    <li><a href="正则表达式.html">正则表达式</a></li>
-                    <li><a href="字符串操作.html">字符串操作</a></li>
-                    <li><a href="float.html">float</a></li>
-                    <li><a href="bootstrap笔记.html">bootstrap笔记</a></li>
-                    <li><a href="jquery笔记.html">jquery笔记</a></li>
-                    <li><a href="JS笔记.html">JS笔记</a></li>
                     </ul>
               </li>
             </ul>
@@ -59,18 +58,39 @@
         </div><!-- /.container-fluid -->
       </nav>
 
+    <div id="wrapper">
+        <div class="menu">				
+            <img id="menu-bg" src="../pic/bg4.PNG" />
+            <ul>
+                <li><a href="">HTML</a></li>
+                <li><a href="">游戏</a></li>
+                <li><a href="">日语</a></li>
+                <li><a href="">菜谱</a></li>
+            </ul>                
+        </div>	
+            
+        <div class="screen">
+            <div class="navbar"></div>
+            <div class="list">
+                <div class="item">
+                    <div class="img">目录</div>
 
-<div id="index" class="index" style="float: left;" >
-    <h2 style="margin: 15px 25px;">目录</h2>
-    <Ol id="ulOfIndex">
+                </div>
+            </div>                            
+                                
+            <div class="burger">
+                <div class="x"></div>
+                <div class="z"></div>
+            </div>        
+        </div>	
+     </div>	
 
-    </Ol>   
-</div>
 <div id="content" class="content">
     <div>
         <h2 class="titleForIndex" data-index="1">
             创建正则表达式
         </h2>
+        <span class="glyphicon glyphicon-console"></span>
         在js中正则表达式<i>(RegExp:Regular Expression)</i>是存在变量中的，有以下两种方法创建一个正则变量：
         <ul>
             <li>var patt=new RegExp("\\w");</li>    
