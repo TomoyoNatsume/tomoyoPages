@@ -187,8 +187,8 @@
 </div>
 <div>
     <h2>用canvas绘制图形</h2>
-    在html里只有一个标签&lt;canvas>。<br/>
-    几乎所有的代码都由js来完成。如：
+    在html里只有一个标签&lt;canvas>。我们应当在canvas标签里设置其width和height，而不是在css样式里。否则画出的图像可能会因为延展而变模糊。<br/>
+    绘制图像所需的代码都由js来完成。如：
     <pre>
     var c=document.getElementById('myCanvas');
     var ctx=context('2d');//用来获取一个'上下文对象'，此对象是后面画图直接用到的。此函数目前只支持'2d'参数
@@ -198,11 +198,90 @@
     ctx.moveTo(0,75);//设置起点
     ctx.lineTo(250,75);//设置终点
     ctx.stroke(); //画图</pre>
+    这里context('2d')函数非常重要，我们通过获取context对象来调用许多绘制函数和变量。<br>
+    此外在canvas中绘制时，有时画出的线段可能会稍微模糊，这时我们需要添加以下语句：
+    <pre>
+    ctx.translate(0.5, 0.5);</pre>
+    因为canvas绘制1px的直线时，其直线是从某条经/纬线（如直线x=100)开始，向左和向右分别偏移0.5px，画出一条1px的直线，而1px宽的直线需要分别占用两边的两个0.5像素。所以我们用translate(0.5,0.5)将原点偏移0.5个像素，绘出的直线就是从x=100.5开始，1px宽的直线就只占用一格像素。
 </div>
+<div>
+    <h2>canvas绘制相关函数</h2>
+    <h3>设置绘制样式</h3>
+    <pre>
+    ctx.globalAlpha=0.5;//设置全局透明度。作用于画布中所有像素。后面再在设置颜色时添加的透明度会与此叠加（这里的叠加是让透明的更透明，可以理解为相乘）
+    ctx.fillStyle='rgb(255,255,0,0.5)';//设置填充颜色，与通常的rgb值一样，第四个参数为透明度
+    ctx.strokeStyle='rgb(0,255,0,0.5)';//设置轮廓颜色
+    ctx.lineWidth=10;//设置绘制线宽,注意这里是数字，而不是'10px'的字符串
+    ctx.lineCap='butt';//设置线段末端形状，有三种：'butt'方形、'round'圆弧形、'square'方形，但末端长度加上线宽的一半。
+    ctx.lineJoin;//设置线段连接点的形状，有三种：'round'圆弧形、'bevel'削平形、'miter'默认的尖形。
+    ctx.setLineDash([20,5]);//设置虚线样式，这里是实线20px，间隔5px。这里的数组里不仅可以有两个数，还可以为任意偶数个
+    ctx.lineDashOffset=0;//设置虚线起始偏移量
+    ctx.getLineDash();//获取虚线样式。格式和上面设置样式时一样。</pre>
+    <h3>绘制矩形</h3>
+    有三种方法：
+    <ul>
+        <li><pre>
+            fillRect(x,y,width,height);//绘制填充的矩形</pre></li>
+        <li><pre>
+            strokeRect(x,y,width,height);//绘制矩形边框</pre></li>
+        <li><pre>clearRect(x,y,width,height);//清除指定的矩形区域，使其变完全透明（而不是白色）</pre></li>
+    </ul>
+    <h3>绘制路径</h3>
+    绘制路径时，需要我们首先声明ctx.beginPath();如：
+    <pre>
+        var ctx=canvas.getContext('2d');
+        ctx.beginPath();//开始准备绘制路径
+        ctx.moveTo(50,50);//设置起点
+        ctx.lineTo(200,50);//设置中间点
+        ctx.lineTo(200,200);//设置中间点
+        ctx.closePath();//如果有closePath()的话，起点和终点会自动连接在一起。也可以不写句。
+        ctx.stroke();//此句开始正式绘制
+    </pre>
+    此外我们可以在绘制完成后用ctx.fill();来填充最后一个绘制的路径。如果没有closePath()则会使其自动闭合。
+
+    <h3>绘制圆弧</h3>
+    有两种方法绘制圆弧，其中第一种不需要ctx.moveTo(),而第二种需要通过moveTo()设置起点
+    <ul>
+        <li><pre>
+    arc(x, y, r, startAngle, endAngle, anticlockwise)//给定圆心、半径、起点弧度和终点弧度</pre></li>
+        <li><pre>
+    arcTo(x1, y1, x2, y2, radius)//给定两控制点和曲率半径，这里的两个控制点和起始点一同组成两条切线，用这两天切线来确定圆弧的位置和大小</pre></li>
+    </ul>
+    <h3>绘制贝塞尔曲线(Bézier curve)</h3>
+    贝塞尔曲线分为一次、二次和三次贝塞尔曲线。一次曲线即直线。其绘制原理见<a href="https://www.runoob.com/w3cnote/html5-canvas-intro.html">canvas绘制</a>都需要设置起点。<br>
+    下面分别是二次贝塞尔曲线和三次贝塞尔曲线。
+    <pre>
+    quadraticCurveTo(cp1x, cp1y, x, y)//设置控制点1和终点</pre>
+    <pre>
+    bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)//设置控制点1、2和终点
+    </pre>
+
+    <h3>绘制文字</h3>
+    <pre>
+        ctx.fillText('Tomoyo',x,y[,maxWidth]);//在(x,y)点绘制实心文本
+        ctx.strokeText('Tomoyo',x,y[,maxWidth]);//在(x,y)点绘制空心文本
+    </pre>
+    在绘制文字前，可以设置文字样式：
+    <pre>
+        ctx.font='100px sans-serif';//这里必须至少有两个参数，字体大小和字体种类（和css设置字体时一样），还可以有其他参数。
+        ctx.textAlign='center';//设置文本对齐，默认为start
+        ctx.direction='ltr';//设置文字方向，可以为ltr、rtl、inherit。默认为inherit
+    </pre>
+    上述设置样式的代码必须要在绘制之前才能生效。
+    <h3>状态的保存和恢复</h3>
+    使用ctx.save()和ctx.restore()来保存和恢复当前状态。状态包括：当前应用的变形（移动、旋转和缩放）；字体样式、线条样式等上面设置的样式；裁切路径clipping path<br>
+    每保存一次，会将当前状态存储到一个堆栈中，restore()则是从栈中弹出最后一个保存的状态。
+</div>
+
+
+
 <div>
     <h2>nth-of-type(i) </h2>
     css3中的伪类/伪元素选择器。用于选择<b>同级</b>的<b>相同元素</b>的第i个元素。
 </div>
+
+
+
 <div>
     <h2>margin</h2>
     当把margin设置为auto时，或者说，更常用地，我们设置左右边距为auto：
@@ -216,15 +295,23 @@
     <h2>用css实现关联两个元素的hover效果</h2>
     如果我们需要实现当鼠标移入元素1中时，改变元素2的样式，只需要css代码而不用js：
     <pre>
-        .ele1:hover .ele2{
-            ...
-        }</pre>
+    .ele1:hover .ele2{
+        ...
+    }</pre>
     
 </div>
 <div>
     <h2>inline-block</h2>
     inline元素包括某些本身默认规定为inline的元素（如span、button）和我们显式设定其display为inline的元素。inline元素的特点是其不单独占用一行，相邻的元素可以在其同一行。且inline元素不可设置width属性（button等除外）。
     block元素相反，其独占一行。可以设置width属性。而inline-block属性兼容两点，既可以让元素设置width属性，又可以让其相邻元素在同一行。
+</div>
+<div>
+    <h2>推荐使用的几个背景颜色</h2>
+    <ul>
+        <li>绿色：rgb(150,195,50)：<div style="margin-left:10px;display:inline-block;width:10px;height:10px;background-color: rgb(150,195,50);"></div></li>
+        <li>黑色：rgb(49,49,57)：<div style="margin-left:10px;display:inline-block;width:10px;height:10px;background-color: rgb(49,49,57);"></div></li>
+        <li>鲑鱼色：salmon|rgb(250,128,114)：<div style="margin-left:10px;display:inline-block;width:10px;height:10px;background-color: salmon;"></div></li>
+    </ul>
 </div>
 </div>
 </div>

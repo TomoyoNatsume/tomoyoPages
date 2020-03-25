@@ -1,3 +1,8 @@
+@font-face{
+    font-family: 'Kavoon';
+    src:url('../fonts/Kavoon-Regular-webfont.ttf');
+
+}
 *{
     line-height: 150%;
     font-family: Arial, Helvetica, sans-serif;
@@ -29,7 +34,7 @@ body{
     width: 30%;
     margin: 10px;
     text-align: center;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: Kavoon;
     line-height: 120px;
     font-size: 50px;
     height: 120px;
@@ -45,13 +50,13 @@ body{
     background-color: rgb(49,49,57) ;
     font-family: fantasy;
     text-align: center;
-    line-height: 120px;
+    line-height: 140px;
     font-size: 40px;
     color: white;
     float: left;
     /* 设置文本行高与div高度一致就可使其垂直居中，而水平居中使用text-align=center
      */
-    box-shadow: 10px 10px 5px #807e7eb9;
+    /* box-shadow: 10px 10px 5px #807e7eb9; */
     border-radius: 0px;
     position: absolute;
     right:0px;
@@ -90,13 +95,13 @@ div.text1{
     color: black;
     background-color: #e2dfdfc2;
     padding: 20px 40px;
-    border-radius: 10px;
+    border-radius: 0px;
 }
 div.text2{
     color: #ffffff;
     background-color: #4d4d4dbe;
     padding: 20px 40px;
-    border-radius: 10px;
+    border-radius: 0px;
 
 }
 .titleForIndex{
@@ -131,6 +136,7 @@ div.text2 > table td,div.text2 > table th{
 }
 a{
     text-decoration: none;
+    color:inherit;
 }
 li a{
     color: inherit;

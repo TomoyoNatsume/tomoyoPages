@@ -5,64 +5,61 @@
 <title style="font-size:smaller;color: aqua;">正则表达式</title> 
 <script src="../js/jquery.min.js"></script>
 <style>
-    .title{
-        margin:0 auto;
-        text-align:center;
-        line-height:200px;
-        position: relative;
-        border:solid;
-        display: inline-block;
-        clear: right;
-    }
-    .titleLine{
-        width:0;
-        height:2px;
-        background:#000;
-        transition:width 100ms linear;
-        position:absolute;
-        margin:0 auto;
-        top:150px;
-        left:0;
-        right:0;
-    }
-    /* .title:hover .titleLine{
-            width:200px;
-        } */
+canvas{
+    /* width: 500px;
+    height: 500px; */
+    border:solid;
+}
 </style>
 
-<script>
-    $().ready(function(){
-        // $span=$('#span1');
-        // $h2=$span.parent();
-        // $h2.hover(function () { 
-        //     $span.css('width',$h2.css('width'));
-        //  })
-        // $h2=$('#h2');
-        // $span=$h2.children();
-        // var wid=parseInt($span.css('width'));
-        // $h2.css('left',wid+'px');
-        // $span.hover(function () {
-        //     $h2.css('border-bottom','solid');
-        //     $h2.css('width',$span.css('width'));
-        //   })
-        $('.title').each(function (i,e) {
-            var $this=$(this);
-            $this.mouseover(function(){
-                $this.children('.titleLine').css('width',$this.css('width'));
-            });
-            $this.mouseout(function () {
-                $this.children('.titleLine').css('width','0px');
-            })
-            $this.wrap('<div></div>');
-        })
-
-    });
-</script>
 
 
 </head>
 <body>
-<span class="glyphicon glyphicon-search"></span>
-<h2 class="title"><span class="titleLine"></span>sdfafweq</h2>adfwqefq
+<canvas id='cav1' width='500' height='500'></canvas>
+<div id='div1'></div>
+<script>
+    window.onload=function(){
+        var cav=document.getElementById('cav1');
+        var x=500,y=500;
+        var xOff=3,yOff=3;
+        if(!cav.getContext){return;}
+        var ctx=cav.getContext('2d');    
+        ctx.translate(0.5, 0.5);
+        ctx.globalAlpha=1;
+        ctx.fillStyle = "rgb(200,0,0)";
+        ctx.lineWidth=1;
+        ctx.strokeStyle='rgb(0,0,0)';
+
+        function move(x,y,xOff,yOff){
+            ctx.shadowBlur=10;  
+            ctx.shadowColor='grey';
+            ctx.shadowOffsetX=xOff;
+            ctx.shadowOffsetY=yOff;
+            ctx.fillStyle='white';
+            ctx.beginPath();
+            ctx.moveTo(500,450);
+            ctx.lineTo(x,y);
+            ctx.lineTo(450,500);
+            ctx.closePath();
+            ctx.stroke();
+            ctx.fill();
+        }
+        var interHandle=setInterval(function () {
+            if(y<=450){
+                clearInterval(interHandle);
+                return;
+            }
+            y<475&&(yOff=-2,xOff=-2);
+            y-=1;
+            // x=500-(Math.pow((500-y),3)/2500);
+            x-=1;
+            $('#div1').html(x+','+y);
+            ctx.clearRect(0,0,500,500);
+            move(x,y,xOff,yOff);
+        },10)
+
+    };
+</script>
 
 </body>
