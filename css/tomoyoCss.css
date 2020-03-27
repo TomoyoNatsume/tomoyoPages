@@ -3,12 +3,16 @@
     src:url('../fonts/Kavoon-Regular-webfont.ttf');
 
 }
+@font-face{
+    font-family:'Consolas';
+    src:url('../fonts/consola.ttf');
+}
 *{
     line-height: 150%;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
 }
-h2{
+.content h2{
     margin:30px 10px;
 }
 body{
@@ -179,4 +183,43 @@ canvas{
 }
 .text2 .titleLine{
     background:white;
+}
+
+/* 目录页的页面简介 */
+.summaryContent{
+    margin:0 0 0 0;
+    background-color: #e2dfdfc2;
+    position: relative;
+}
+.summaryContent::after,.summaryContent::before{
+    content: '            ';
+    height:40px;
+    display: inline-block;
+}
+.summaryContent h2{
+    margin:10px 10px;
+    line-height: 45px;
+}
+.summaryText{
+    margin: 40px 40px;
+}
+.summary{
+    font-size: 13px;
+    margin: 0px 50px;
+}
+
+.summary::after{
+    content: '......';
+
+}
+h2 a{
+    font-size: inherit;
+    font-weight: inherit;
+    margin-left: 10px;
+}
+span.date{
+    color: #666;
+}
+span.date::after{
+    content: ' - ';
 }

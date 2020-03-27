@@ -2,7 +2,7 @@
 <html>
 <head> 
 <meta charset="utf-8"> 
-<title style="font-size:smaller;color: aqua;">HTML笔记</title> 
+<title style="font-size:smaller;color: aqua;">HTML</title> 
 <link href="../css/bootstrap.css" rel="stylesheet">
 <link href="../css/tomoyoCss.css" rel="stylesheet">
 <link href="../css/menu-bar.css" rel="stylesheet" >
@@ -23,21 +23,11 @@
         <div id="header" class="header" style="float: left;">
         HTML笔记</div>
     </div>
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-inverse" style="margin-bottom: 0px;">
         <div class="container-fluid">
-          <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
-            <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button> 
-        此处疑似为适应移动端的代码，电脑端实际不会执行-->
             <a class="navbar-brand" href="#" style="color: salmon;">Tomoyo</a>
           </div>
-          
-          <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class="dropdown">
@@ -46,11 +36,79 @@
                     <ul class="dropdown-menu">
                     </ul>
                 </li>
+                <li><a>&gt;</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                   aria-expanded="false">HTML</a>
+                      <ul class="dropdown-menu">
+                      </ul>
+                </li>
             </ul>
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
-    
+    <div class="summaryContent">
+      <div class="summaryText">
+        <h2><span class="glyphicon glyphicon-pencil"></span><a href="HTML笔记.html">HTML笔记</a></h2>
+        <div class="summary"><span class='date'>2020年3月26日</span>html常用文本标签&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;表强调：strong
+          表示语气强调以倾斜的方式显现：em
+          表倾斜：i
+          加粗：b
+          小字显示：small
+          表示引用：cite
+          让字体变小：sub
+          下划线：u
+          让字体变小显示在上方:sup
+          表示插入的字符：ins </div>
+      </div>
+      <div class="summaryText">
+        <h2><span class="glyphicon glyphicon-pencil"></span><a href="正则表达式.html">正则表达式</a></h2>
+        <div class="summary"><span class='date'>2020年3月26日</span>创建正则表达式 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在js中正则表达式(RegExp:Regular Expression)是存在变量中的，有以下两种方法创建一个正则变量</div>
+      </div>
+      <div class="summaryText">
+        <h2><span class="glyphicon glyphicon-pencil"></span><a href="字符串操作.html">字符串操作</a></h2>
+        <div class="summary"><span class='date'>2020年3月26日</span>创建字符串&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          创建一个字符串变量的两种方式：
+          
+              var str=new string('this is a string');
+              var str='this is a string';
+          
+          注意js里创建数组的方法为：
+          
+              var arr=new Array();
+              arr[0]='123';/div>
+      </div>
+      </div>
+      <div class="summaryText">
+        <h2><span class="glyphicon glyphicon-pencil"></span><a href="bootstrap笔记.html">bootstrap笔记</a></h2>
+        <div class="summary"><span class='date'>2020年3月26日</span>为dropdown增加淡入淡出效果&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          这里的下拉菜单(dropdown)为导航条内的，故整体被li包含。
+          首先要知道下拉菜单的同胞元素和父元素分别为一个a标签和一个li标签。bootstrap里实现切换显示 的方法为给其父元素li添加一个类：'open'。此外，当打开下拉菜单时，a标签中有一个自定义属性aria-expanded将 会被设置成true。</div>
+      </div>
+      <div class="summaryText">
+        <h2><span class="glyphicon glyphicon-pencil"></span><a href="jquery笔记.html">jquery笔记</a></h2>
+        <div class="summary"><span class='date'>2020年3月26日</span>事件&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          事件有两种处理方式：
+          
+              $('p').on('click',function(){...});
+          
+          选择器</div>
+      </div>
+      <div class="summaryText">
+        <h2><span class="glyphicon glyphicon-pencil"></span><a href="JS笔记.html">JS笔记</a></h2>
+        <div class="summary"><span class='date'>2020年3月26日</span>JS中定义对象&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+          var person={
+              name:"Jhon" 
+              sex:"male" 
+              height:"170"
+          };
+      
+      其中name、sex、height为变量（属性），其后为对应的值。中间的空格可以换为逗号或换行。
+      访问对象的变量：</div>
+      </div>
+    </div>
 
 
 

@@ -4,62 +4,24 @@
 <meta charset="utf-8"> 
 <title style="font-size:smaller;color: aqua;">正则表达式</title> 
 <script src="../js/jquery.min.js"></script>
-<style>
-canvas{
-    /* width: 500px;
-    height: 500px; */
-    border:solid;
-}
-</style>
-
-
+<link href="../css/component.css" rel="stylesheet">
+<script src="../js/jsForIndexPages.js" ></script>
 
 </head>
 <body>
-<canvas id='cav1' width='500' height='500'></canvas>
 <div id='div1'></div>
-<script>
-    window.onload=function(){
-        var cav=document.getElementById('cav1');
-        var x=500,y=500;
-        var xOff=3,yOff=3;
-        if(!cav.getContext){return;}
-        var ctx=cav.getContext('2d');    
-        ctx.translate(0.5, 0.5);
-        ctx.globalAlpha=1;
-        ctx.fillStyle = "rgb(200,0,0)";
-        ctx.lineWidth=1;
-        ctx.strokeStyle='rgb(0,0,0)';
 
-        function move(x,y,xOff,yOff){
-            ctx.shadowBlur=10;  
-            ctx.shadowColor='grey';
-            ctx.shadowOffsetX=xOff;
-            ctx.shadowOffsetY=yOff;
-            ctx.fillStyle='white';
-            ctx.beginPath();
-            ctx.moveTo(500,450);
-            ctx.lineTo(x,y);
-            ctx.lineTo(450,500);
-            ctx.closePath();
-            ctx.stroke();
-            ctx.fill();
-        }
-        var interHandle=setInterval(function () {
-            if(y<=450){
-                clearInterval(interHandle);
-                return;
-            }
-            y<475&&(yOff=-2,xOff=-2);
-            y-=1;
-            // x=500-(Math.pow((500-y),3)/2500);
-            x-=1;
-            $('#div1').html(x+','+y);
-            ctx.clearRect(0,0,500,500);
-            move(x,y,xOff,yOff);
-        },10)
-
-    };
-</script>
-
+<ul class="grid cs-style-3">
+    <li>
+        <figure id='fig1'>
+            <img src="../pic/4.png" alt="img04">
+            <canvas id='cav1' width="75" height="75"></canvas>
+            <figcaption>
+                <h3>Settings</h3>
+                <span>Jacob Cummings</span>
+                <a>Take a look</a>
+            </figcaption>
+        </figure>
+    </li>
+</ul>
 </body>

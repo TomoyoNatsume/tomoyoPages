@@ -86,21 +86,24 @@
      </div>	
 <div class="content" id="content">
     <div>
-        <h2>定义对象</h2>
-    var person={name:"Jhon" sex:"male" height:"170"};<br/>
-    其中name、sex、height为变量（属性），其后为对应的值。中间的空格可以换为逗号或换行。<br/><br/>
-
+        <h2>JS中定义对象</h2>
+    <pre>
+    var person={
+        name:"Jhon" 
+        sex:"male" 
+        height:"170"
+    };</pre>
+    其中name、sex、height为变量（属性），其后为对应的值。中间的空格可以换为逗号或换行。<br/>
     访问对象的变量：<br/>
     person.name<br/>
-    或person["name"]<br/>
+    或person["name"]<br/><br/>
 
     对象方法：
     （相当于c语言里的成员函数）<br/>
     <pre>
     changeName:function(newName){
         return:newName;
-    }
-    </pre>
+    }</pre>
     这一段在定义对象时的代码的内部。而在外面调用函数时，和c一样：<br/>
     person.changeName("Jhonny");<br/>
     </div>
@@ -116,8 +119,7 @@
         this.sex=sex;
         this.height=height;
     }
-    var p1=new person('Jhon','male','170');
-</pre></li>
+    var p1=new person('Jhon','male','170');</pre></li>
     <li>使用object类创建对象<br/>
     先定义一个空的object对象：(由于js为动态语言，因此可以动态地为该对象增加属性和方法)
     <pre>
@@ -131,7 +133,7 @@
 </div>
 <div>
 <h2>定义函数</h2>
-    当用以下方法定义匿名函数时：<br/>
+    js中定义函数的方法有些复杂，首先函数分为匿名函数和普通函数自不必说。其次，当用以下方法定义匿名函数时：<br/>
     <pre>
     var fun=function(){
         alert('fuck');
@@ -144,7 +146,7 @@
         alert(m+n);
     })(10,20);</pre>
     其实是'定义+调用'，也就是本身的内容运行了一遍。<br/>
-    此外，这种方法还可以将第一个括号换为一元操作符，如+-*~!<br/>
+    然后，这种方法还可以将第一个括号换为一元操作符，如+-*~!<br/>
     <pre>
     +function(m,n){
         alert(m+n);
@@ -154,7 +156,7 @@
     (function(m,n){
         alert(m+n);
     }(10,20));</pre>
-    另外，在jQuery中，以下写法相当于$(document).ready(function(){...})：
+    这些都是'定义+调用'。另外，在jQuery中，以下写法相当于$(document).ready(function(){...})：
     <pre>
     $(function () {
         ...
@@ -163,9 +165,16 @@
 </div>
 <div>
     <h2>变量的作用域</h2>
-    与c++不同，js可以在函数中定义函数，甚至可以在实参表中定义函数。也因此变量的寿命和作用域与c++不同。在js中，在函数f1(){var a}内的局部变量a，如果在f1中定义一函数f2，如f1(){f2(){}}，则f1的内定义的变量能在f2中直接使用。
+    与c++不同，js可以在函数中定义函数，甚至可以在实参表中定义函数。也因此变量的寿命和作用域与c++不同。在js中，在函数f1(){var a}内的局部变量a，如果在f1中定义一函数f2，如:
+    <pre>
+    f1(){
+        f2(){
+            x=2;
+        }
+        var x;
+    }</pre>
+    则f1的内定义的变量x能在f2中直接使用。
 </div>
-<div></div>
 <div>
     <h2>运算符优先级</h2>
     <h3>关联性</h3>
@@ -174,7 +183,7 @@
     a op b op c</pre>
     其中op代表运算符，如果是左关联，则相当于在a&nbsp;op&nbsp;b外面加了括号，先执行此步。而如果是右关联，则先执行b&nbsp;op&nbsp;c。最典型的，赋值运算符为右关联。
     <h3>汇总表</h3>
-    优先级从高到低(20~1)排列
+    这里给出一些常用的运算符，优先级从高到低(20~1)排列。全部运算符的表可以参考这里：<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Operator_Precedence">运算符优先级</a>
     <table>
         <tr>
             <th>优先级</th>
@@ -251,16 +260,16 @@
     1.判断下表达式的返回值，以及b的最终值。（b无初值）
     <pre>
     1!==3&&(b=7,3&lt;9&&(b-=3))</pre>
-    虽然括号的优先级最高，但是这里括号的作用只是防止算成(..&&b)，实际希望它算成...&&(b-=3)。所以计算时，并不是<b>先算</b>最里面的括号
-    (b-=3)，而是从左往右（按&&和===原本的关联性），先计算1===3，然后计算b=7（而不是按优先级，最后才考虑赋值运算符），以此类推。
-    这里可以推理，如果不是这样的话，那么b=7最后运算，b-=3就会因为b没有初值而报错。<br/>
+    虽然括号的优先级最高，但是这里括号的作用只是防止算成(..&&b)-=3，实际希望它算成...&&(b-=3)。所以计算时，<b>并不是先算</b>最里面的括号
+    (b-=3)，而是从左往右（按&&和!==原本的关联性），先计算1!==3，然后计算b=7（否则如果按优先级判断计算顺序，最后才考虑赋值运算符），以此类推。<br>
+    而且这里可以推理，如果不是这样，而是按优先级判断计算顺序，那么b=7最后运算，b-=3就会因为b没有初值而报错。<br/>
     同样，可以试验，将前面改为1===3时，整个式子只判断到此就结束，最后b会无定义。<br/>
-    因此最终返回值为4（而不是true），b=4。<br/>
+    因此最终返回值为4（注意不是true），b=4。<br/>
     此外，试验以下表达式：
     <pre>
     var a=1;
     alert(1==3&&a++);</pre>
-    a仍会为1，且返回false。但是++本来的优先级是高于&&和==的，所以这里同样可以推断，并不是优先级高的就优先计算的。
+    a仍会为1，且返回false。但是++本来的优先级是高于&&和==的，所以这里同样可以推断，并不是优先级高的就优先计算的。<br/><br/>
     2.判断下面表达式的运算顺序    
     <pre>
     null !== n.x && null !== n.y && (o = i.x - n.x, m = i.y - n.y, l = o * o + m * m, 
@@ -270,7 +279,7 @@
     r.lineTo(n.x, n.y), r.stroke(),iCounter++))</pre>
     <pre>
     i.x -= .03 * o, i.y -= .03 * m</pre>
-参考：<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Operator_Precedence">运算符优先级</a>
+
 </div>
 <div>
 

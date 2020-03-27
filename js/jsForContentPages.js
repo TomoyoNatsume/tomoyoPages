@@ -9,14 +9,16 @@ $().ready(function(){
 
     //自动给每个h2标题添加动态下划线
     //由于h2元素与div不一样，本身的长度一定要占一整行，而div虽然也是block元素，但长度是随内容可变的。所以我们在每个h2元素外部包裹一个div
-    $h2.each(function(){
+    //因为不只是文章页的h2标签，目录页的h2标签也要加下划线，所以这里再定义个变量_$h2
+    var _$h2=$('h2');
+    _$h2.each(function(){
         $(this).addClass('titleH2');
         $(this).wrap('<div></div>');
         $(this).prepend('<span class="titleLine"></span>');
     })
     //我们在js中根据h2的行高设置下划线的top值，而不用css，因为h2的行高/高度不一定确定，这样可以避免我们以后更改h2的height时下划线错位。
     $('.titleLine').each(function(){
-        $(this).css('top',$h2.css('line-height'));
+        $(this).css('top',_$h2.css('line-height'));
     })
     $('.titleH2').each(function (i,e) {
         var $this=$(this);
@@ -31,8 +33,11 @@ $().ready(function(){
 
 
     //动态调整目录高度
-    var oIndex=document.getElementById('wrapper');
-    oIndex.style.height=(36*$('#wrapper .item span').length+300)+'px';
+    +function () {
+        var oIndex=document.getElementById('wrapper');
+        if(!oIndex)return;
+        oIndex.style.height=(36*$('#wrapper .item span').length+300)+'px';
+    }();
 
 
     //为内容div中的所有div添加类名：text1|text2
@@ -71,7 +76,7 @@ $().ready(function(){
     //动态标题
     var tit1='Tomoyo的主页(゜-゜)つロ                ';
     var tit2='----Tomoyo的笔记ヾ(*´▽‘*)ﾉ                ';
-    var tit3='您已离开当前页面ﾍ(;´Д｀ﾍ)';
+    var tit3='您已离开ﾍ(;´Д｀ﾍ)';
     var motoTit=$('title').text();
     var i=0,str1='',str2=motoTit;
     function funInterval(){
@@ -98,22 +103,14 @@ $().ready(function(){
         }
     }
     document.addEventListener('visibilitychange',changeTitle);
-    $('title').hover(function () {
-        $('title').text('fuck');
-     });
-    
-
-    
-
-
-
-    
 
     //下拉菜单内容
-    $('.dropdown-menu').eq(0).html('<li><a href="index.html">HTML</a></li><li><a>游戏</a></li><li><a>日语</a></li><li><a>菜单</a></li>');
+    $('.dropdown-menu').eq(0).html('<li><a href="indexPage.html">HTML</a></li><li><a>游戏</a></li><li><a>日语</a></li><li><a>菜单</a></li>');
     $('.dropdown-menu').eq(1)&&$('.dropdown-menu').eq(1).html('<li><a href="HTML笔记.html">HTML笔记</a></li> <li><a href="正则表达式.html">正则表达式</a></li>    <li><a href="字符串操作.html">字符串操作</a></li>   <li><a href="bootstrap笔记.html">bootstrap笔记</a></li>    <li><a href="jquery笔记.html">jquery笔记</a></li>    <li><a href="JS笔记.html">JS笔记</a></li>')
     //导航栏Tomoyo链接
-    $('.navbar-brand').attr('href','index.html')
-    
+    $('.navbar-brand').attr('href','../index.html')
+    // $('li.dropdown').text('HTML');
+
+
 
 });
