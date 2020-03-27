@@ -26,7 +26,7 @@ figure标签先有img，图像必须为400×300
 	box-sizing: border-box;
 	display: inline-block;
 	width: 440px;
-	margin: 0px 20px;
+	margin: 40px 40px;
 	padding: 20px;
 	text-align: left;
 	position: relative;
