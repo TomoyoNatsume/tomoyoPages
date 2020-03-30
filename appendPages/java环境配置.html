@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset="utf-8"> 
+<title style="font-size:smaller;color: aqua;">java环境配置</title> 
+<link href="../css/bootstrap.css" rel="stylesheet">
+<link href="../css/tomoyoCss.css" rel="stylesheet">
+<link href="../css/menu-bar.css" rel="stylesheet" >
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/jsForContentPages.js"></script>
+<script src='../js/menu-bar.js'></script>
+<script src="../js/jsForAppendPages.js"></script>
+</head>
+<body>
+    <script type="text/javascript" src="../js/dynamicLines.js"></script>
+<div style="position: relative;" class="mainDiv" id="mainDiv">
+    <div id="logoAndHeader">
+        <div class="logo" style="float: left;">
+            My&nbsp&nbsp&nbspHTML  
+        </div>
+        <div id="header" class="header" style="float: left;">
+            java环境配置</div>
+    </div>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button> 
+        此处疑似为适应移动端的代码，电脑端实际不会执行-->
+            <a class="navbar-brand" href="#" style="color: salmon;">Tomoyo</a>
+          </div>
+          
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    aria-expanded="false">ALL</a>
+                    <ul class="dropdown-menu">
+                    </ul>
+                </li>
+                <li><a>&gt;</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                 aria-expanded="false">其它笔记</a>
+                    <ul class="dropdown-menu">
+                    </ul>
+              </li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+
+    <div id="wrapper">
+        <div class="menu">				
+            <img id="menu-bg" src="../pic/bg4.PNG" />
+            <ul>
+                <li><a href="">HTML</a></li>
+                <li><a href="">游戏</a></li>
+                <li><a href="">日语</a></li>
+                <li><a href="">菜谱</a></li>
+            </ul>                
+        </div>	
+            
+        <div class="screen">
+            <div class="navbar"></div>
+            <div class="list">
+                <div class="item">
+                    <div class="img">目录</div>
+
+                </div>
+            </div>                            
+                                
+            <div class="burger">
+                <div class="x"></div>
+                <div class="z"></div>
+            </div>        
+        </div>	
+     </div>	
+    <div id="content" class="content">
+        <div>
+            <h2>配置java开发环境</h2>
+            这里有详细步骤：<a href="https://www.runoob.com/java/java-environment-setup.html">java开发环境配置</a>
+        </div>
+        <div>
+            <h2>java运行报错：“编码GBK的不可映射字符”</h2>
+            当我们的.java文件中出现中文字符时，编码时系统默认编码方式为gbk，而实际上我们的文件不是用gbk保存的话，就会报错。<br>
+            解决方式有两个：
+            <ul>
+                <li>更改保存时的编码方式</li>
+                <li>在运行java文件时，加上编码方式指令，如用utf8时为：java -encoding UTF-8 XXX.java</li>
+            </ul>
+        </div>
+        <div>
+            <h2>运行javac命令报错</h2>
+            当我们按照教程运行javac命令时，可能有的电脑会报如下错误：Error: A JNI error has occurred, please check your installation and try again。
+            其原因是java和javac的版本不一致。下面有几个解决办法：
+            <ul>
+                <li>卸载掉旧版本java，官网有专门的卸载工具：<a href="https://www.java.com/zh_CN/download/uninstalltool.jsp">java卸载工具</a></li>
+                <li>有时候我们用卸载工具检查的时候发现没有旧版本的java。那可能是我们分别安装过JRE和javaJDK，这时，更改环境变量的PATH变量，将之前设置的java路径%JAVA_HOME%\bin移动到最上级。否则在Windows命令行下执行命令时，先从当前目录搜素，然后按照PATH设置的路径依次查找命令，而JRE安装时会将java.exe安装到C:\WINDOWS\system32目录下，所以执行java -version命令时，查看的是jre的版本，而javac -version时查看的jdk的版本。
+                </li>
+            </ul>
+        </div>
+
+        <div>
+            <h2>参考资料</h2>
+            <a href="https://www.cnblogs.com/shined/p/4492615.html">java与javac版本不一致问题</a>
+            <a href="https://jingyan.baidu.com/article/e3c78d649a56233c4c85f502.html">CMD运行JAVA出现编码GBK的不可映射字符处理方法</a>
+        </div>
+    </div>
+    
+</div>
+</body>

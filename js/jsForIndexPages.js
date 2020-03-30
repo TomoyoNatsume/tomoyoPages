@@ -47,7 +47,7 @@ $().ready(function(){
     }
     document.addEventListener('visibilitychange',changeTitle);
     //下拉菜单内容
-    $('.dropdown-menu').eq(0).html('<li><a href="htmlPages/indexPage.html">HTML</a></li><li><a>游戏</a></li><li><a>日语</a></li><li><a>菜单</a></li>');
+    $('.dropdown-menu').eq(0).html('<li><a href="htmlPages/indexPage.html">HTML</a></li><li><a>游戏</a></li><li><a href="jpPages/indexPage.html">日语</a></li><li><a>菜单</a></li>');
     // $('.dropdown-menu').eq(1)&&$('.dropdown-menu').eq(1).html('<li><a href="htmlPages/HTML笔记.html">HTML笔记</a></li> <li><a href="htmlPages/正则表达式.html">正则表达式</a></li>    <li><a href="htmlPages/字符串操作.html">字符串操作</a></li>   <li><a href="htmlPages/bootstrap笔记.html">bootstrap笔记</a></li>    <li><a href="htmlPages/jquery笔记.html">jquery笔记</a></li>    <li><a href="htmlPages/JS笔记.html">JS笔记</a></li>')
     //导航栏Tomoyo链接
     $('.navbar-brand').attr('href','index.html')
@@ -55,7 +55,7 @@ $().ready(function(){
 
 
 
-    //滑动目录的翻页特效
+    //滑动文件夹的翻页特效
     //每添加一个，需要
     var x=50,y=50;
     $('figure canvas').each(function () {

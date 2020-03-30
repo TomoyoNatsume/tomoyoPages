@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset="utf-8"> 
+<title style="font-size:smaller;color: aqua;">win10日语输入法配置</title> 
+<link href="../css/bootstrap.css" rel="stylesheet">
+<link href="../css/tomoyoCss.css" rel="stylesheet">
+<link href="../css/menu-bar.css" rel="stylesheet" >
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/jsForContentPages.js"></script>
+<script src='../js/menu-bar.js'></script>
+<script src="../js/jsForJpPages.js"></script>
+</head>
+<body>
+    <script type="text/javascript" src="../js/dynamicLines.js"></script>
+<div style="position: relative;" class="mainDiv" id="mainDiv">
+    <div id="logoAndHeader">
+        <div class="logo" style="float: left;">
+            My&nbsp&nbsp&nbspHTML  
+        </div>
+        <div id="header" class="header" style="float: left;">
+            win10日语输入法配置</div>
+    </div>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button> 
+        此处疑似为适应移动端的代码，电脑端实际不会执行-->
+            <a class="navbar-brand" href="#" style="color: salmon;">Tomoyo</a>
+          </div>
+          
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    aria-expanded="false">ALL</a>
+                    <ul class="dropdown-menu">
+                    </ul>
+                </li>
+                <li><a>&gt;</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                 aria-expanded="false">日语</a>
+                    <ul class="dropdown-menu">
+                    </ul>
+              </li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+
+    <div id="wrapper">
+        <div class="menu">				
+            <img id="menu-bg" src="../pic/bg4.PNG" />
+            <ul>
+                <li><a href="">HTML</a></li>
+                <li><a href="">游戏</a></li>
+                <li><a href="">日语</a></li>
+                <li><a href="">菜谱</a></li>
+            </ul>                
+        </div>	
+            
+        <div class="screen">
+            <div class="navbar"></div>
+            <div class="list">
+                <div class="item">
+                    <div class="img">目录</div>
+
+                </div>
+            </div>                            
+                                
+            <div class="burger">
+                <div class="x"></div>
+                <div class="z"></div>
+            </div>        
+        </div>	
+     </div>	
+    <div id="content" class="content">
+        <div>
+            <h2>配制方法</h2>
+            在win10中添加日语输入法的方法为：设置->区域和语言->添加语言。选择日语，然后会自动下载语言包，然后就可以使用。<br>
+        </div>
+        <div>
+            <h2>配置时出现的问题</h2>
+            
+            
+            有时候会出现日文输入法只能输入字母的情况，检查C:/windows/IME文件夹可以发现（我们用的输入法即IME），
+            其中的IMEJP文件夹只有不到10M。这里输入法不能正常使用的原因其实就是少了某些文件，我们可以自己下载IMEJP文件夹，
+            把原有的替换掉。<br>
+            下载链接: <a href="https://pan.baidu.com/s/1hxb03WJ-Pgp8_fCf__yePg"> https://pan.baidu.com/s/1hxb03WJ-Pgp8_fCf__yePg</a> 提取码: xw28
+        </div>
+    </div>
+    
+</div>
+</body>
